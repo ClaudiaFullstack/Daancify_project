@@ -1,0 +1,27 @@
+
+<div class="shell">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" *ngFor="let card of obs | async">
+                <div class="wsk-cp-product">
+                    <div class="wsk-cp-img">
+                        <img src="https://3.bp.blogspot.com/-eDeTttUjHxI/WVSvmI-552I/AAAAAAAAAKw/0T3LN6jABKMyEkTRUUQMFxpe6PLvtcMMwCPcBGAYYCw/s1600/001-culture-clash-matthew-gianoulis.jpg"
+                            alt="Product" class="img-responsive" />
+                    </div>
+                    <div class="wsk-cp-text">
+                        <div class="category">
+                            <span>Ethnic</span>
+                        </div>
+                        <div class="title-product">
+                            <h3>{{card.name}} {{card.last_name}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-primary btn-block hidden-xs" [routerLink]="['/student/teacher',card.user_id]">Ver Clases</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

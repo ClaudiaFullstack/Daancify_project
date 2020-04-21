@@ -1,0 +1,6 @@
+<h1>ADMINISTRACIÓN DE USUARIOS</h1>
+<app-users-filter (searchClick)="search($event)" (clearClick)="clear()"></app-users-filter>
+<div class="buttons-container">
+    <button mat-raised-button color="accent" (click)="newUser()"> Nuevo Usuario</button>
+</div>
+<app-users-grid [data]="theUserList" (rowClick)="goToDetail($event)"></app-users-grid>

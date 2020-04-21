@@ -1,0 +1,25 @@
+.mat-elevation-z8 {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    th {
+        // font-weight: bold;
+        font-size: 1.1rem;
+        background: dimgrey;
+        color: white;
+        .mat-sort-header-arrow {
+            font-size: 1.1rem !important;
+            color: white !important;
+        }
+    }
+}
+
+.mat-row {
+    &:hover {
+        background-color: lightgray;
+        transform: scale(1.05) translateY(-3px);
+        box-shadow: 1px 15px 35px -10px rgba(0, 0, 0, 0.4);
+    }
+}

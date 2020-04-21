@@ -1,0 +1,2 @@
+La carpeta services es una de las principales carpetas dentro del módulo core,
+ya que en el mismo se tiene los diferentes services de llamadas a los endpoints de una o más APIs Rest.

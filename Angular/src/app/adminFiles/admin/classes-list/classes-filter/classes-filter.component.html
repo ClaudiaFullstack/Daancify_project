@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header class="padding">
+        <mat-card-title>
+            Filtrado de Clases
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="filterForm">
+            <mat-form-field>
+                <input matInput placeholder="Nombre de clase" formControlName="class_name">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Ubicación" formControlName="location">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="date" formControlName="start_date">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nivel de la clase</mat-label>
+                <select matNativeControl required formControlName="level">
+                    <option value=0>Inicial</option>
+                    <option value=1>Intermedio</option>
+                    <option value=2>Avanzado</option>
+                    <option value=3>Perfeccionamiento</option>
+                </select>
+            </mat-form-field>
+            <mat-form-field>
+             
+                    <mat-label>Estilo de baile favorito</mat-label>
+                    <mat-select formControlName="dance_style_id">
+                        <mat-option *ngFor="let dance_style of dance_styles" [value]="dance_style.dance_style_id">
+                            {{dance_style.dance_style_name}}
+                        </mat-option>
+                    </mat-select>
+            
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="secondary" (click)="clearForm()">Limpiar</button>
+        <button mat-raised-button color="primary" (click)="search()">Buscar</button>
+    </mat-card-actions>
+</mat-card>

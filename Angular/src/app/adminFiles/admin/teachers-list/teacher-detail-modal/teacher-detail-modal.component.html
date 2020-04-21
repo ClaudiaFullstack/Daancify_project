@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Datos de Profesores</h1>
+<div mat-dialog-content>
+    <form [formGroup]="teacherForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Id</mat-label>
+            <input matInput disabled [value]="teacherForm.controls.user_id.value">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nombre De Usuario</mat-label>
+            <input matInput placeHolder="Nombre De Usuario" type="text" formControlName="user_name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeHolder="Nombre" type="text" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Apellido</mat-label>
+            <input matInput placeHolder="Apellido" type="text" formControlName="last_name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input matInput placeHolder="E-mail" type="text" formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input matInput placeHolder="Teléfono" type="text" formControlName="phone">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput placeHolder="Password" type="text" formControlName="password">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Tipo de Usuario" formControlName="user_type">
+                <mat-option [value]="'3'">Estudiante</mat-option>
+                <mat-option [value]="'2'">Profesor</mat-option>
+                <mat-option [value]="'1'">Administrador</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Estilo de baile favorito</mat-label>
+            <mat-select formControlName="dance_style_id">
+                <mat-option *ngFor="let dance_style of dance_styles" [value]="dance_style.dance_style_id">
+                    {{dance_style.dance_style_name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button type="button" mat-raised-button class="imgbtn" (click)="fileInput.click()">Cambiar imagen</button>
+        <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+
+
+
+
+        <!-- Falta Avatar -->
+        <!-- ************************************************************* -->
+        <!-- <mat-card class="input-container">
+            <button #file mat-flat-button color="primary">Examinar...
+              <input multiple (change)="onFileSelected($event)" style="opacity: 0; position:absolute; left:0px; top:0px; width:100%; height:100%;" type="file"/>
+          </button> {{files|json}}
+        </mat-card> -->
+
+        <!-- ************************************************************* -->
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button class="button" mat-button (click)="cancelClick()">Cancel</button>
+    <button class="button" mat-button (click)="deleteUser(teacherForm.controls.user_id.value)">Borrar</button>
+    <button class="button" mat-button (click)="saveClick()" cdkFocusInitial>Guardar Profesor</button>
+</div>

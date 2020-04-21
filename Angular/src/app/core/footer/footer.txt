@@ -1,0 +1,2 @@
+Las carpetas footer y header contienen los archivos de componentes globales,
+utilizados estáticamente en toda la aplicación. Estos archivos aparecerán en cada página de la aplicación.

@@ -1,0 +1,164 @@
+<!-- Botón desplegable -->
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="beforePanelOpened(panelOpenState)"
+    (closed)="beforePanelClosed(panelOpenState)">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Crear una nueva clase
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!-- Formulario de clases -->
+    <form [formGroup]="classForm">
+        <div class="login-box">
+            <div class="row container-form">
+                <div class=" col-12 registration-right">
+                    <mat-form-field>
+                        <mat-label>Nombre de la clase</mat-label>
+                        <input matInput placeholder="Málaga" type="text" formControlName="class_name">
+                    </mat-form-field>
+                    <br>
+                    <mat-label class="example-margin">*Marcar si no tiene escuela</mat-label>
+                    <br>
+                    <mat-radio-group>
+                        <mat-radio-button class="example-margin" value='false' (click)="SchoolDance()">No
+                        </mat-radio-button>
+                    </mat-radio-group>
+
+                    <mat-radio-group formControlName="modality" class="space">
+                        <mat-radio-button value="0">Directo</mat-radio-button>
+                        <mat-radio-button value="1" class="space-radio">Online</mat-radio-button>
+                    </mat-radio-group>
+                    <br>
+                    <mat-form-field *ngIf="schoolDanceHave">
+                        <mat-label>Escuela de baile</mat-label>
+                        <mat-select formControlName="dance_school_id">
+                            <mat-option *ngFor="let school of schoolDance" [value]="school.dance_school_id">
+                                {{school.dance_school_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Localización</mat-label>
+                        <input matInput placeholder="Málaga" type="text" formControlName="location">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Descripción</mat-label>
+                        <input matInput #message maxlength="256"
+                            placeholder="Clase de flamenco para practicar en parejas" formControlName="description">
+                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Precio</mat-label>
+                        <input matInput placeholder="15" type="number" formControlName="price">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Nivel de la clase</mat-label>
+                        <select matNativeControl required formControlName="level">
+                            <option value=0>Inicial</option>
+                            <option value=1>Intermedio</option>
+                            <option value=2>Avanzado</option>
+                            <option value=3>Perfeccionamiento</option>
+                        </select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Estilo de baile favorito</mat-label>
+                        <mat-select formControlName="dance_style_id">
+                            <mat-option *ngFor="let dance_style of dance_styles" [value]="dance_style.dance_style_id">
+                                {{dance_style.dance_style_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
+                    <span>Fecha de inicio</span><span><input type="date" formControlName="start_date"></span>
+                    <span>Fecha de inicio</span><span><input type="date" formControlName="end_date"></span>
+                    <span>Hora de inicio</span><span><input type="time" formControlName="start_hour"></span>
+                    <span>Hora de inicio</span><span><input type="time" formControlName="end_hour"></span>
+
+                    <mat-form-field>
+                        <mat-label>Perioricidad</mat-label>
+                        <select matNativeControl required formControlName="periodicity">
+                            <option value="puntual">Puntual</option>
+                            <option value="mes">Mes</option>
+                            <option value="anual">Anual</option>
+                        </select>
+
+                        <mat-hint>¿Cuanto va a durar su clase?</mat-hint>
+                    </mat-form-field>
+
+                    <br>
+                    <button mat-raised-button class="submit-button" (click)="createClass()"
+                        [disabled]="!classForm.valid">Crear
+                        Clase</button>
+                    <button mat-raised-button class="submit-button" (click)="classForm.reset()">Limpiar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-expansion-panel>
+
+
+
+
+
+<!-- Contenido del la lista de clases que ha creado un profesor -->
+<div *ngIf="!classList?.length">
+    <h1>No tienes ninguna clase creada</h1>
+</div>
+<div *ngIf="classList?.length">
+    <br>
+    <h1 class="title-margin">¡BIENVENIDO {{ user.name }}! <span class="badge badge-secondary">Profesor</span></h1>
+    <div class="container" *ngFor="let card of obs | async">
+        <div class="card">
+            <div class="card__image-container">
+                <img class="card__image" src="./../../../assets/images/photos/ck.jpg" alt="" />
+            </div>
+            <svg class="card__svg" viewBox="0 0 800 500">
+                <path
+                    d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500"
+                    stroke="transparent" fill=" whitesmoke " />
+                <path class="card__line"
+                    d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400"
+                    stroke="pink" stroke-width="3" fill="transparent" />
+            </svg>
+            <div class="card__content">
+                <h2 class="nombre">{{card?.class_name}}</h2>
+                <p class="lugar">LUGAR: {{card?.location}}</p>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"></h3>
+                    <div class="tipoDanzas">
+                        <h2 class="estilo">{{card.dance_style_name}}</h2>
+                        <p>{{card.description}}</p>
+                    </div>
+                    <br>
+                    <p> <u>HORARIO </u> </p>
+                    <p> <span class="title-text">FECHA: </span> {{card.start_date | date:"mediumDate"}} -
+                        {{card.end_date | date:"mediumDate"}} </p>
+                    <p><span class="title-text">DURACION:</span> {{card.start_hour}} - {{card.end_hour}}</p>
+                    <p *ngIf="card?.level === 0"><span class="title-text">NIVEL:</span> Inicial</p>
+                    <p *ngIf="card?.level === 1"><span class="title-text">NIVEL:</span> Intermedio</p>
+                    <p *ngIf="card?.level === 2"><span class="title-text">NIVEL:</span> Avanzado</p>
+                    <p *ngIf="card?.level === 3"><span class="title-text">NIVEL:</span> Perfeccionamiento</p>
+                    <p *ngIf="card?.modality === 0"><span class="title-text">MODALIDAD:</span> Directo</p>
+                    <p *ngIf="card?.modality === 1"><span class="title-text">MODALIDAD:</span> Streaming</p>
+                    <p><span class="title-text">PRECIO: </span> {{card?.price}} € </p>
+                    <div class="details">
+                        <div class="edit"><a class="btn btn-primary btn-block hidden-xs"
+                                (click)="editClass(card)">Editar</a>
+                        </div>
+                        <div class="borrar"><a class="btn btn-primary btn-block hidden-xs"
+                                (click)="deleteClass(card.class_id)">Borrar</a>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+<!-- Fin - Contenido del la lista de clases que ha creado un profesor -->

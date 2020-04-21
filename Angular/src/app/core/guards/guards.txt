@@ -1,0 +1,1 @@
+La carpeta guards contiene todos los guards que usamos para proteger diferentes rutas en nuestra aplicación.

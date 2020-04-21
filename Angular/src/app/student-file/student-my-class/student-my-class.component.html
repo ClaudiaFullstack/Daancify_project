@@ -1,0 +1,53 @@
+<br>
+    <h1 class="title-margin">¡BIENVENIDO {{ theUser.name }}! <span class="badge badge-secondary">Estudiante</span></h1>
+    <h2 *ngIf="!classList?.length">No estas apuntado a ninguna clase</h2>
+    <div class="container" *ngFor="let card of obs | async">
+        <div class="card">
+            <div class="card__image-container">
+                <img class="card__image" src="./../../../assets/images/photos/ck.jpg" alt="" />
+            </div>
+            <svg class="card__svg" viewBox="0 0 800 500">
+                <path
+                    d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500"
+                    stroke="transparent" fill=" whitesmoke " />
+                <path class="card__line"
+                    d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400"
+                    stroke="pink" stroke-width="3" fill="transparent" />
+            </svg>
+            <div class="card__content">
+                <h2 class="nombre">{{card?.class_name}}</h2>
+                <p class="lugar"><span class="title-text">Impartido por:</span>{{card?.name}}</p>
+                <p class="lugar"><span class="title-text">LUGAR:</span> {{card?.location}}</p>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"></h3>
+                    <div class="tipoDanzas">
+                        <h2 class="estilo">{{card.dance_style_name}}</h2>
+                        <p>{{card.description}}</p>
+                    </div>
+                    <br>
+                    <p> <u>HORARIO </u> </p>
+                    <p> <span class="title-text">FECHA: </span> {{card.start_date | date:"mediumDate"}} - {{card.end_date | date:"mediumDate"}} </p>
+                    <p><span class="title-text">DURACION:</span> {{card.start_hour}} - {{card.end_hour}}</p>
+                    <p *ngIf="card?.level === 0"><span class="title-text">NIVEL:</span> Inicial</p>
+                    <p *ngIf="card?.level === 1"><span class="title-text">NIVEL:</span> Intermedio</p>
+                    <p *ngIf="card?.level === 2"><span class="title-text">NIVEL:</span> Avanzado</p>
+                    <p *ngIf="card?.level === 3"><span class="title-text">NIVEL:</span> Perfeccionamiento</p>
+                    <p *ngIf="card?.modality === 0"><span class="title-text">MODALIDAD:</span> Directo</p>
+                    <p *ngIf="card?.modality === 1"><span class="title-text">MODALIDAD:</span> Streaming</p>
+                    <p><span class="title-text">PRECIO: </span> {{card?.price}} € </p>
+                    <div class="details">
+                        <div class="edit"><a class="btn btn-primary btn-block hidden-xs" (click)="signOut(card)" >Quitarme</a>
+                            
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

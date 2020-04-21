@@ -1,0 +1,138 @@
+<!-- Botón desplegable -->
+<mat-expansion-panel [expanded]="panelOpenState"
+(opened)="beforePanelOpened(panelOpenState)"
+  (closed)="beforePanelClosed(panelOpenState)">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Crear una nueva escuela
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!-- Formulario de Escuela de danza -->
+
+    <mat-card>
+
+        <form [formGroup]="danceSchoolForm">
+            <div class="login-box">
+                <div class="row container-form">
+                    <div class=" col-12 col-md-6 registration-right">
+                        <p>
+                            <mat-form-field>
+                                <mat-label>Nombre</mat-label>
+                                <input matInput placeholder="Escuela Maria Dolores" type="text"
+                                    formControlName="dance_school_name">
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field>
+                                <mat-label>Dirección</mat-label>
+                                <input matInput placeholder="c/ejemplo" type="text" formControlName="address">
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Descripción</mat-label>
+                                <input matInput #message maxlength="256"
+                                    placeholder="Clase de flamenco para practicar en parejas"
+                                    formControlName="description">
+                                <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                            </mat-form-field>
+                        </p>
+                    </div>
+                    <div class=" col-6 col-md-3 registration-left">
+                        <p>
+                            <mat-form-field>
+                                <mat-label>Telefono</mat-label>
+                                <span matPrefix>+34 &nbsp;</span>
+                                <input matInput placeHolder="678374589" type="text"
+                                    formControlName="phone_dance_school">
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field>
+                                <mat-label>Email</mat-label>
+                                <input matInput formControlName="email" placeholder="Ex. pat@example.com"
+                                    [errorStateMatcher]="matcher">
+                                <mat-error
+                                    *ngIf="danceSchoolForm.hasError('email','email') && !danceSchoolForm.hasError('required','email')">
+                                    Please enter a valid email address
+                                </mat-error>
+                                <mat-error *ngIf="danceSchoolForm.hasError('required','email')">
+                                    Email is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                    </div>
+                    <div class="row container-form-buttom-submit">
+                        <div>
+                            <button mat-raised-button class="submit-button" (click)="createSchoolDance()"
+                                [disabled]="!danceSchoolForm.valid">Crear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+
+    <!-- Formulario de clases -->
+
+</mat-expansion-panel>
+
+
+
+
+
+<h1 *ngIf="!danceSchoolList?.length">No tienes ninguna escuela creada</h1>
+
+<div *ngIf="danceSchoolList?.length">
+
+    <h1 class="title-margin">¡BIENVENIDO {{ user.name }}! <span class="badge badge-secondary">Profesor</span></h1>
+    <div class="container" *ngFor="let card of obs | async">
+        <div class="card">
+            <div class="card__image-container">
+                <img class="card__image" src="./../../../assets/images/photos/ck.jpg" alt="" />
+            </div>
+            <svg class="card__svg" viewBox="0 0 800 500">
+                <path
+                    d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500"
+                    stroke="transparent" fill=" whitesmoke " />
+                <path class="card__line"
+                    d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400"
+                    stroke="pink" stroke-width="3" fill="transparent" />
+            </svg>
+            <div class="card__content">
+                <h2 class="nombre">{{card?.dance_school_name}}</h2>
+                <p class="lugar">LUGAR: {{card?.address}}</p>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"></h3>
+                    <div class="tipoDanzas">
+                        <h2 class="estilo">Descripción</h2>
+                        <p>{{card.description}}</p>
+                    </div>
+                    <br>
+                    <p> <u>Contacto </u> </p>
+                    <p> <span class="title-text">Telefono: </span> {{card.phone_dance_school}} -
+                        {{card.end_date | date:"mediumDate"}} </p>
+                    <p><span class="title-text">Email:</span> {{card.email}}</p>
+                    <div class="details">
+                        <div class="edit"><a class="btn btn-primary btn-block hidden-xs"
+                                (click)="editarDanceSchool(card)">Editar</a>
+                        </div>
+                        <div class="borrar"><a class="btn btn-primary btn-block hidden-xs"
+                                (click)="deleteDanceSchool(card.class_id)">Borrar</a>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+<!-- Fin - Contenido del la lista de clases que ha creado un profesor -->

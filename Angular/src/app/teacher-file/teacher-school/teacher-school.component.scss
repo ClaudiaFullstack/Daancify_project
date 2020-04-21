@@ -1,0 +1,372 @@
+
+/* CSS CARD */
+
+$color_white: #fff;
+$color_prime: red;
+$color_grey: #e2e2e2;
+$color_grey_dark: #a2a2a2;
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  margin-bottom: 1.6%;
+  background: $color_white;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  a {
+    color: inherit;
+    &:hover {
+      color: $color_prime;
+    }
+  }
+  &:hover {
+    // .photo {
+    //   transform: scale(1.3) rotate(3deg);
+    // }
+  }
+  .meta {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+  }
+  .photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform .2s;
+  }
+  .details,
+  .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left .2s;
+    background: rgba(#000, .6);
+    color: $color_white;
+    padding: 10px;
+    width: 100%;
+    font-size: .9rem;
+    a {
+      text-decoration: dotted underline
+    }
+    ul li {
+      display: inline-block;
+    }
+    .author:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f007";
+    }
+
+    .date:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f133";
+    }
+
+    .tags {
+      ul:before {
+        font-family: FontAwesome;
+        content: "\f02b";
+        margin-right: 10px;
+      }
+      li {
+        margin-right: 2px;
+        &:first-child {
+          margin-left: -4px;
+        }
+      }
+    }
+  }
+  .description {
+    padding: 1rem;
+    background: $color_white;
+    position: relative;
+    z-index: 1;
+    h1,
+    h2 {
+      font-family: Poppins, sans-serif;
+    }
+    h1 {
+      line-height: 1;
+      margin: 0;
+      font-size: 1.7rem;
+    }
+    h2 {
+      font-size: 1rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: $color_grey_dark;
+      margin-top: 5px;
+    }
+    .read-more {
+      text-align: right;
+      a {
+        color: $color_prime;
+        display: inline-block;
+        position: relative;
+        &:after {
+          content: "\f061";
+          font-family: FontAwesome;
+          margin-left: -10px;
+          opacity: 0;
+          vertical-align: middle;
+          transition: margin .3s, opacity .3s;
+        }
+
+        &:hover:after {
+          margin-left: 5px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  p {
+    position: relative;
+    margin: 1rem 0 0;
+    &:first-of-type {
+      margin-top: 1.25rem;
+      &:before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        background: $color_prime;
+        width: 35px;
+        top: -0.75rem;
+        border-radius: 3px;
+      }
+    }
+  }
+  &:hover {
+    .details {
+      left: 0%;
+    }
+  }
+
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    
+    max-width: 950px;
+
+    .meta {
+      flex-basis: 40%;
+      height: auto;
+    }
+    .description {
+      flex-basis: 60%;
+      &:before {
+        transform: skewX(-3deg);
+        content: "";
+        background: #fff;
+        width: 30px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+    }
+    &.alt {
+      flex-direction: row-reverse;
+      .description {
+        &:before {
+          left: inherit;
+          right: -10px;
+          transform: skew(3deg)
+        }
+      }
+      .details {
+        padding-left: 25px;
+      }
+    }
+  }
+
+}
+.space{
+  margin-left: 140px;
+}
+.space-radio{
+  margin-left: 10px;
+}
+
+// Claudia
+.title-text{
+  color:red;
+}
+h1 {
+  background: whitesmoke;
+  color: red;
+  text-align: center;
+  padding: 0.5em;
+  border-top: 10px solid red;
+  .title-margin{
+    margin-bottom: 0 !important;
+  }
+}
+img {
+  max-width: 100%;
+}
+.nombre {
+  position: relative;
+  width: auto;
+  background-color: white;
+  color: red;
+  display: flex;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+}
+.card {
+  position: relative;
+  background: whitesmoke;
+  width: 350px;
+  height: 480px;
+  border-radius: 6px;
+  padding: 2rem;
+  color: black;
+  overflow: hidden;
+  color: red;
+  &__line {
+    opacity: 0;
+    animation: LineFadeIn 0.8s 0.8s forwards ease-in;
+    color: red;
+  }
+  &__image {
+    opacity: 0;
+    animation: ImageFadeIn 0.8s 1.4s forwards;
+  }
+  &__title {
+    color: black;
+    margin-top: 0;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    background-color: red;
+    width: 250px;
+  }
+  &__content {
+    margin-top: -1rem;
+    opacity: 0;
+    animation: ContentFadeIn 0.8s 1.6s forwards;
+  }
+  &__svg {
+    position: absolute;
+    left: 0;
+    top: 115px;
+  }
+}
+@keyframes LineFadeIn {
+  0% {
+    opacity: 0;
+    d: path(
+      "M 0 300 Q 0 300 0 300 Q 0 300 0 300 C 0 300 0 300 0 300 Q 0 300 0 300 "
+    );
+    stroke: red;
+  }
+  50% {
+    opacity: 1;
+    d: path(
+      "M 0 300 Q 50 300 100 300 Q 250 300 350 300 C 350 300 500 300 650 300 Q 750 300 800 300"
+    );
+    stroke: red;
+  }
+  100% {
+    opacity: 1;
+    d: path(
+      "M -2 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 802 400"
+    );
+    stroke: red;
+  }
+}
+@keyframes ContentFadeIn {
+  0% {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes ImageFadeIn {
+  0% {
+    transform: translate(-0.5rem, -0.5rem) scale(1.05);
+    opacity: 0;
+    filter: blur(2px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+.estilo {
+  color: black;
+  border-top: 5px solid red;
+}
+.description {
+  font-size: 18px;
+  color: black;
+  font-weight: 600;
+  border-top: 5px solid red;
+}
+p {
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+}
+.tipoDanzas {
+  background-color: whitesmoke;
+  width: 250px;
+  border-top: 5px solid red;
+}
+.nombre {
+  font-size: 25px;
+  color: black;
+  border-top: 10px solid red;
+}
+.lugar {
+  font-size: 18px;
+  font-weight: 600;
+}
+.details {
+  display: flex;
+  border-color: black;
+}
+.borrar {
+  padding-left: 15px;
+}
+.btn-primary,
+.btn-primary.disabled {
+  background: whitesmoke;
+  border: 2px solid red;
+  width: 100px;
+}
+
+.mat-expansion-panel-header-title {
+  color: rgba(234, 69, 69, 0.87);
+}

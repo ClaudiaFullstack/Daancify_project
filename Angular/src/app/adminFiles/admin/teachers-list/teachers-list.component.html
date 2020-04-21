@@ -1,0 +1,6 @@
+<h1>ADMINISTRACIÓN DE PROFESORES</h1>
+<app-teachers-filter (searchClick)="search($event)" (clearClick)="clear()"></app-teachers-filter>
+<div class="buttons-container">
+    <button mat-raised-button color="accent" (click)="newUser()"> Nuevo Profesor</button>
+</div>
+<app-teachers-grid [data]="theUserList" (rowClick)="goToDetail($event)"></app-teachers-grid>

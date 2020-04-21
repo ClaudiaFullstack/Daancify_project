@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-header class="padding">
+        <mat-card-title>
+            Filtrado de Profesores
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="filterForm">
+            <mat-form-field>
+                <input matInput placeholder="Nombre de Usuario" formControlName="user_name">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Introduzca Nombre" formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Introduzca Apellidos" formControlName="last_name">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Introduzca Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Introduzca Teléfono" formControlName="phone">
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="secondary" (click)="clearForm()">Limpiar</button>
+        <button mat-raised-button color="primary" (click)="search()">Buscar</button>
+    </mat-card-actions>
+</mat-card>

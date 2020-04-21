@@ -1,0 +1,2 @@
+La carpeta de authentication simplemente maneja el ciclo de autenticación del usuario
+(desde el inicio de sesión hasta el cierre de sesión).

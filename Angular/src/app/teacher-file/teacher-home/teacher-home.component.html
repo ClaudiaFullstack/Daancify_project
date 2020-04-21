@@ -1,0 +1,13 @@
+<h1>¡Bienvenido {{theUser.name}}! <span class="badge badge-secondary">Profesor</span></h1>
+<h2>Tus clases más proximas</h2>
+<div class="card-group">
+    <div class="card" *ngFor="let class of classList">
+        <div class="card-body">
+            <h3 class="card-title">{{class.dance_style_name}}</h3>
+            <p>Lugar : {{class.location}}</p>
+            <p class="card-text">{{class.description}}</p>
+                <p>precio : {{class.price}}</p>
+            <p class="card-text"><small class="text-muted" *ngIf="class.level === 0">Nivel Principiante</small></p>
+        </div>
+    </div>
+</div>

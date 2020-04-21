@@ -1,0 +1,112 @@
+<!-- Formulario de registro -->
+<mat-card>
+    <form [formGroup]="registrationForm">
+        <!-- Nombre de Usuario -->
+        <div class="login-box">
+            <div class="row title-form">
+                <p>Nueva Usuario</p>
+            </div>
+            <div class="row container-form">
+
+                <!-- Derecha -->
+                <div class=" col-12 col-md-6 registration-right">
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Usuario</mat-label>
+                            <input matInput placeHolder="user_name" type="text" formControlName="user_name">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Nombre</mat-label>
+                            <input matInput placeHolder="name" type="text" formControlName="name">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Apellido</mat-label>
+                            <input matInput placeHolder="last_name" type="text" formControlName="last_name">
+                        </mat-form-field>
+                    </p>
+                    <!-- Email -->
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" placeholder="Ex. pat@example.com"
+                                [errorStateMatcher]="matcher">
+                            <mat-error
+                                *ngIf="registrationForm.hasError('email','email') && !registrationForm.hasError('required','email')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="registrationForm.hasError('required','email')">
+                                Email is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput placeHolder="password" type="password" formControlName="password">
+                        </mat-form-field>
+                    </p>
+                </div>
+                <!-- Izquierda -->
+                <div class=" col-6 col-md-3 registration-left">
+                    <!-- Telefono -->
+                    <!-- <p>
+                        <mat-form-field>
+                            <mat-label>Telefono</mat-label>
+                            <span matPrefix>+34 &nbsp;</span>
+                            <input matInput placeHolder="678374589" type="text" formControlName="phone">
+                        </mat-form-field>
+                    </p> -->
+                    <br>
+                    <!-- Tipo de usuario -->
+                    <p>
+
+                        <mat-radio-group formControlName="user_type">
+                            <mat-radio-button value="3">Estudiante </mat-radio-button>
+                            <mat-radio-button value="2">Profesor</mat-radio-button>
+                        </mat-radio-group>
+
+                    </p>
+                    <br>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Estilo de baile favorito</mat-label>
+                            <mat-select formControlName="dance_style_id">
+                                <mat-option *ngFor="let dance_style of dance_styles"
+                                    [value]="dance_style.dance_style_id">
+                                    {{dance_style.dance_style_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <!-- <mat-form-field appearance="legacy">
+                    <ngx-mat-file-input formControlName="avatar" value=FileInput._fileNames [accept]="'.png'"></ngx-mat-file-input>
+                    <mat-icon matSuffix>folder</mat-icon>
+                    
+                </mat-form-field> -->
+
+                        <!-- <input type="file" formControlName="avatar"> -->
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="row container-form-buttom-submit">
+                <div>
+                    <button mat-raised-button class="submit-button" (click)="registration()"
+                        [disabled]="!registrationForm.valid">Registrar</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </form>
+</mat-card>
+
+
+

@@ -1,0 +1,27 @@
+// css Rodrigo
+.col-3 {
+    padding: 0;
+}
+
+h1 {
+    margin: 20px;
+}
+
+.marginTop {
+    margin-top: 70px;
+    color: gray;
+    margin-bottom: -55px;
+}
+
+.buttons-container {
+    text-align: right;
+    margin-right: 40px;
+    button {
+        width: 150px;
+        &:hover {
+            font-weight: bold;
+            background-color: white;
+            color: #ff4081;
+        }
+    }
+}

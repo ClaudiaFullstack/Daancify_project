@@ -1,0 +1,104 @@
+
+/* CSS Fernando */
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .form{
+    margin-top: 106px;
+  }
+  .login-box{
+     position: relative;
+    margin: 2% auto; 
+ 
+    width: 470px;
+    height: 100%;
+    background: #FFF;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  .container-form{
+      width: 100%;
+      margin: 0;
+      display: flex;
+      
+  }
+  .container-form-buttom-submit{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+ 
+.submit-button {
+    margin-top: 28px;
+    width: 120px;
+    height: 32px;
+    background: #ff1717;
+    border: none;
+    border-radius: 2px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.1s ease;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+
+@media only screen and (max-width:375px){
+  .container-form{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .registration-right{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .login-box{
+
+    width: 99%;
+
+  }
+}
+.example-margin {
+  margin: 0 10px;
+}
+.title-form{
+  justify-content: center;
+  margin-bottom: 15px;
+  margin: auto; 
+  padding-top: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 0;
+  margin-right: 0;
+}
+/* Cambiar de material */
+.photoregister{
+  height: 400px;
+  width: 400px;
+  margin-top: 60px;
+ 
+}
+.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+  margin-bottom: 0;
+
+}

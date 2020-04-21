@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Datos de clases</h1>
+<div mat-dialog-content>
+    <form [formGroup]="classForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Id</mat-label>
+            <input matInput disabled [value]="classForm.controls.class_id.value">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Id Escuela</mat-label>
+            <input matInput disabled [value]="classForm.controls.dance_school_id.value">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nombre Clase</mat-label>
+            <input matInput placeHolder="Nombre Clase" type="text" formControlName="class_name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Ubicación</mat-label>
+            <input matInput placeHolder="Ubicación" type="text" formControlName="location">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <input matInput placeHolder="description" type="text" formControlName="description">
+        </mat-form-field>
+        <mat-form-field class="cuadrado">
+            <input matInput type="date" placeholder="Fecha Inicio" formControlName="start_date">
+        </mat-form-field>
+        <mat-form-field class="cuadrado">
+            <input matInput type="date" placeholder="Fecha Fin" formControlName="end_date">
+        </mat-form-field>
+        <mat-form-field class="cuadrado">
+            <input matInput type="time" placeholder="Hora Inicio" formControlName="start_hour">
+        </mat-form-field>
+        <mat-form-field class="cuadrado">
+            <input matInput type="time" placeholder="Hora Fin" formControlName="end_hour">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Periodicidad</mat-label>
+            <mat-select placeholder="Nivel de la clase" formControlName="level">
+                <mat-option></mat-option>
+                <mat-option [value]="'puntual'">Puntual</mat-option>
+                <mat-option [value]="'mes'">Mes</mat-option>
+                <mat-option [value]="'anual'">Anual</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nivel</mat-label>
+            <mat-select placeholder="Nivel de la clase" formControlName="level">
+                <mat-option [value]="'1'">Inicial</mat-option>
+                <mat-option [value]="'2'">Intermedio</mat-option>
+                <mat-option [value]="'3'">Avanzado</mat-option>
+                <mat-option [value]="'4'">Perfeccionamiento</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Estilo de baile favorito</mat-label>
+            <mat-select formControlName="dance_style_id">
+                <mat-option *ngFor="let dance_style of dance_styles" [value]="dance_style.dance_style_id">
+                    {{dance_style.dance_style_name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+
+
+<div mat-dialog-actions>
+    <button mat-button (click)="cancelClick()">Cancel</button>
+    <button mat-button (click)="deleteUser(classForm.controls.class_id.value)">Borrar</button>
+    <button mat-button (click)="saveClick()" cdkFocusInitial>Guardar clase</button>
+    <button mat-button cdkFocusInitial>Crear una clase</button>
+
+</div>

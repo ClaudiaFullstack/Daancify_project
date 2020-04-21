@@ -1,0 +1,24 @@
+mat-card {
+    padding: 10px;
+    margin-top: 60px!important;
+    background-color: lightgrey;
+    mat-form-field {
+        margin-right: 20px;
+    }
+    margin: 20px;
+    mat-card-actions {
+        text-align: right;
+        button {
+            width: 80px;
+            &:hover {
+                font-weight: bold;
+                background-color: gray;
+                color: black;
+            }
+        }
+    }
+}
+
+.padding {
+    padding-top: 50px;
+}

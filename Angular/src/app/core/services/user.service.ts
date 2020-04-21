@@ -73,8 +73,8 @@ export class UserService {
 
 
  // IMAGE
-      updateFile(formData,id): Observable<any[]> {
-        const url = `http://localhost:3000/users/profile`;
+      updateFile(formData,user_id): Observable<any[]> {
+        const url = `http://localhost:3000/users/profile/${user_id}`;
         return this.httpClient.post<any[]>(url,formData);
 
 }

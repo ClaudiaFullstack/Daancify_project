@@ -7,7 +7,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, '/public/uploads')
+        cb(null, 'public/uploads')
     },
     filename: function(req, file, cb) {
         cb(null, file.originalname)
@@ -48,7 +48,7 @@ router.get('/delete/:user_id', userController.deleteUser);
 
 //UPDATE PROFILE
 //http://localhost:3000/users/profile
-router.post('/profile/user_id',upload.single('file'), userController.updateFile);
+router.post('/profile/:user_id',upload.single('avatar'), userController.updateFile);
 
 //SEARCH USER
 //http://localhost:3000/users/search

@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
 
   // Image
   images: any;
+  imgForm: FormGroup;
 
 
   constructor(fb: FormBuilder, private userService: UserService, private routes: ActivatedRoute, private classService: ClassService,
@@ -46,6 +47,10 @@ export class ProfileComponent implements OnInit {
       avatar: [''],
     });
 
+    this.imgForm = fb.group({
+      avatar: ['']
+    })
+
     this.recharge();
   }
 
@@ -66,24 +71,20 @@ export class ProfileComponent implements OnInit {
   }
   //Image
 
-  selectImage(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.images = file;
-    }
-  }
-
   onSubmit() {
     const formData = new FormData();
-    formData.append('file',this.images);
-    console.log(formData)
-    this.userService.updateFile(formData,this.id).subscribe(data =>{
-
+    formData.append('avatar', this.images);
+    this.userService.updateFile(formData, this.id).subscribe(data => {
+      console.log(data);
     })
   }
 
-  // Imagen
-  
+  onUpload(event) {
+    this.images = event.target.files[0];
+  }
+
+
+
 
 
   //PRIVATE FUNCTION

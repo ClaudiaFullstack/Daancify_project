@@ -8,7 +8,7 @@ import { UserIdentity } from '../../models/user-identity';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  urlImage = "../../../../../API/public/uploads/";
   @Input() user: UserIdentity;
   @Output() logout = new EventEmitter(false);
 

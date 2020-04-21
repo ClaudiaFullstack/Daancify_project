@@ -153,7 +153,7 @@ controller.updateFile = (req,res) =>{
     let user_id = req.params.user_id;
 
     let sql = `UPDATE user set? WHERE user_id=${user_id}`
-    connection.query(sql,
+    connection.query(sql,{avatar},
         (err, results) => {
             res.send(results);
         })

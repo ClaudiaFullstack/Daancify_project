@@ -154,8 +154,7 @@ controller.updateClass = (req, res) => {
         dance_style_id,
         level
     } = req.body;
-    console.log(req.body)
-    console.log(class_id)
+
     let sqlClass = `UPDATE class set ? WHERE class_id = ${class_id} AND logical_erase = 0`;
     let sqlTimeTable = `UPDATE time_table set ? WHERE class_id = ${class_id} AND logical_erase = 0`
     let sqlDanceStyleClass = `UPDATE dance_style_class set ? WHERE class_id = ${class_id}`
@@ -164,14 +163,14 @@ controller.updateClass = (req, res) => {
 
     connection.query(sqlClass, { modality, price, location, description, dance_school_id, class_name },
         (error, resultsClass) => {
-
+            
             connection.query(sqlTimeTable, { start_date, end_date, start_hour, end_hour, periodicity },
                 (error, resultsTime) => {
-                    console.log(resultsTime);
+              
 
                     connection.query(sqlDanceStyleClass, { dance_style_id,level },
                         (error, resultsDance) => {
-                            console.log(resultsDance)
+                        
                         });
                 });
         });

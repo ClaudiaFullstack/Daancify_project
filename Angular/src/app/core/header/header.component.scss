@@ -1,3 +1,10 @@
+
+
+.mobile-navbar{
+    display: none;
+    visibility: hidden;
+}
+
 .dark-logo {
     width: 60px;
 }
@@ -17,8 +24,24 @@
 .redButton {
     color: red;
     padding-left: 30px;
+    font-size: 16px;
 }
 .topbar .navbar-light .navbar-nav .nav-item > a.nav-link {
     color: whitesmoke;
 
+}
+.topbar .profile-pic {
+    width: 40px !important;
+   
+}
+
+@media only screen and (max-width:375px){
+    .mobile-navbar{
+    visibility:visible;
+    display: unset;
+    }
+    .desktop-navbar{
+        visibility: hidden;
+        display: none;
+    }
 }

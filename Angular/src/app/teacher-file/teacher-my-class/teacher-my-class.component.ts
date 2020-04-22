@@ -98,18 +98,18 @@ export class TeacherMyClassComponent implements OnInit, OnChanges {
 
   createClass() {
     const newClass = new Class(this.classForm.value);
-    if (this.schoolDanceHave) {
+    if (!this.schoolDanceHave) {
       newClass.dance_school_id = null;
     }
     if (newClass.class_id) {
-      this.classService.updateClass(newClass).subscribe(data => {})
+      this.classService.updateClass(newClass).subscribe(data => {
+        
+      })
     } else {
-      if (this.schoolDanceHave) {
-        newClass.dance_school_id = null;
-      }
       const teacher_id = this.user.user_id;
       this.classService.createClass(newClass, teacher_id).subscribe((data) => {
         this.panelOpenState = false;
+    
       });
     }
     this.recharge();
@@ -143,12 +143,10 @@ export class TeacherMyClassComponent implements OnInit, OnChanges {
   private recharge() {
     this.classService.getClassTeacher(this.user.user_id).subscribe(data => {
       this.classList = data;
-      
       this.dataSource = new MatTableDataSource<Class>(this.classList);
       this.dataSource.paginator = this.paginator;
       this.obs = this.dataSource.connect();
       this.changeDetectorRef.detectChanges();
-      // this.dataSource = new MatTableDataSource<Class>(data);
     })
   }
   beforePanelClosed(panel) {

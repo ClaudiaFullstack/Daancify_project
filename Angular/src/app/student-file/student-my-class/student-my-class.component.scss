@@ -1,5 +1,9 @@
 
-// Claudia
+.mobile-navbar{
+  display: none;
+  visibility: vis;
+}
+// CSS MY-CLASS
 .title-text{
     color:red;
   }
@@ -19,7 +23,6 @@
   .nombre {
     position: relative;
     width: auto;
-    background-color: white;
     color: red;
     display: flex;
   }
@@ -157,4 +160,21 @@
     background: whitesmoke;
     border: 2px solid red;
     width: 100px;
+  }
+
+  @media only screen and (max-width:375px){
+
+    .mobile-navbar{
+      display: unset;
+      visibility: visible;
+    }
+  
+    .desktop-navbar{
+      display: none;
+      visibility: hidden;
+    }
+    .card{
+      height: 530px;
+      margin-top: 60px;
+    }
   }

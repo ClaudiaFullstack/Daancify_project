@@ -43,7 +43,7 @@
         <!-- End Logo -->
         <!-- ============================================================== -->
         <div class="navbar-collapse">
-            <div class="buttons">
+            <div class="buttons desktop-navbar">
                 <!-- Cuando nos estas logeado -->
                 <div *ngIf="user">
                     <div *ngIf="user.user.user_type == 2">
@@ -102,7 +102,9 @@
                                 <div class="message-center">
                                     <!-- Message -->
                                     <a href="#">
-                                        <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                        <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user"
+                                                class="img-circle"> <span
+                                                class="profile-status online pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span>
                                             <span class="time">9:30 AM</span>
@@ -110,7 +112,8 @@
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
-                                        <div class="user-img"> <img src="assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span>
+                                        <div class="user-img"> <img src="assets/images/users/2.jpg" alt="user"
+                                                class="img-circle"> <span class="profile-status busy pull-right"></span>
                                         </div>
                                         <div class="mail-contnet">
                                             <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you
@@ -119,15 +122,19 @@
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
-                                        <div class="user-img"> <img src="assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span>
+                                        <div class="user-img"> <img src="assets/images/users/3.jpg" alt="user"
+                                                class="img-circle"> <span class="profile-status away pull-right"></span>
                                         </div>
                                         <div class="mail-contnet">
-                                            <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
+                                            <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span
+                                                class="time">9:08 AM</span>
                                         </div>
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
-                                        <div class="user-img"> <img src="assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                        <div class="user-img"> <img src="assets/images/users/4.jpg" alt="user"
+                                                class="img-circle"> <span
+                                                class="profile-status offline pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span>
                                             <span class="time">9:02 AM</span>
@@ -151,26 +158,52 @@
                 <!-- Profile -->
 
                 <li *ngIf="user" class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user"
+                            class="profile-pic" /></a>
                     <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img [src] = "user.user.avatar" alt="user">
+                                    <div class="u-img"><img [src]="'../../../../../API/public/uploads/'+ user.user.avatar" alt="user">
                                     </div>
                                     <div class="u-text">
                                         <h4><span class="user"> {{user.user.name}}{{user.user.last_name}}
-                                               </span></h4>
-                                        <p class="text-muted"><span class="user" *ngIf="user">{{user.user.email}}</span></p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a>
+                                            </span></h4>
+                                        <p class="text-muted"><span class="user" *ngIf="user">{{user.user.email}}</span>
+                                        </p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">Ver
+                                            Perfil</a>
                                     </div>
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a [routerLink]="['/profile',user.user.user_id]"><i class="ti-user"></i> Mi Perfil</a></li>
-                            <!-- <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Mensajes</a></li> -->
-                            <!-- <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Configuracíon de cuenta</a></li> -->
+                            <li><a [routerLink]="['/profile',user.user.user_id]"><i class="ti-user"></i> Mi Perfil</a>
+                            </li>
+                            <div class="mobile-navbar">
+                                <li role="separator" class="divider"></li>
+                                <div *ngIf="user">
+                                    <div *ngIf="user.user.user_type == 2">
+                                        <li><a class="redButton " [routerLink]="['home']"> Inicio </a></li>
+                                        <li><a class="redButton" [routerLink]="['/teacher/my-class']"> Mis clases </a>
+                                        </li>
+                                        <li><a class="redButton" [routerLink]="['/teacher/dance-school']"> Escuela</a>
+                                        </li>
+                                    </div>
+                                    <div *ngIf="user.user.user_type == 3">
+                                        <li><a class="redButton" [routerLink]="['/home']"> Inicio </a></li>
+                                        <li><a class="redButton" [routerLink]="['/student/class']"> Clases </a></li>
+                                        <li><a class="redButton" [routerLink]="['/student/teacher']"> Profesor</a></li>
+                                        <li><a class="redButton" [routerLink]="['/student/my-class']"> Mis cursos</a>
+                                        </li>
+                                    </div>
+                                    <div *ngIf="user.user.user_type == 1">
+                                        <li><a class="redButton" [routerLink]="['/admin']"> Administración </a></li>
+                                        <li><a class="redButton" [routerLink]="['/admin/user']"> Usuarios</a></li>
+                                        <li><a class="redButton" [routerLink]="['/admin/teacher']"> Profesores</a></li>
+                                        <li><a class="redButton" [routerLink]="['/admin/class']"> Clases</a></li>
+                                    </div>
+                                </div>
+                            </div>
                             <li role="separator" class="divider"></li>
                             <li><a (click)="logOut()"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>

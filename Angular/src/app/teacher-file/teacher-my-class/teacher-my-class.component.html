@@ -106,9 +106,9 @@
 </div>
 <div *ngIf="classList?.length">
     <br>
-    <h1 class="title-margin">¡BIENVENIDO {{ user.name }}! <span class="badge badge-secondary">Profesor</span></h1>
+    <h1 class="title-margin desktop-navbar">¡BIENVENIDO {{ user.name }}! <span class="badge badge-secondary">Profesor</span></h1>
     <div class="container" *ngFor="let card of obs | async">
-        <div class="card">
+        <div class="card desktop-navbar">
             <div class="card__image-container">
                 <img class="card__image" src="./../../../assets/images/photos/ck.jpg" alt="" />
             </div>
@@ -128,6 +128,10 @@
         <div class="card-group">
             <div class="card">
                 <div class="card-body">
+                    <div class="card__content mobile-navbar">
+                        <h2 class="nombre">{{card?.class_name}}</h2>
+                        <p class="lugar">LUGAR: {{card?.location}}</p>
+                    </div>
                     <h3 class="card-title"></h3>
                     <div class="tipoDanzas">
                         <h2 class="estilo">{{card.dance_style_name}}</h2>

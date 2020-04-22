@@ -5757,7 +5757,7 @@ File: scss
     padding: 25px 15px 25px 15px; }
   /*Header*/
   .topbar {
-    position: fixed;
+    /* position: fixed; */
     width: 100%; }
     .topbar .top-navbar {
       -webkit-box-orient: horizontal;

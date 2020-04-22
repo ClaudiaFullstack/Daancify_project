@@ -1,6 +1,9 @@
 
 /* CSS CARD */
-
+.mobile-navbar{
+  display: none;
+  visibility: vis;
+}
 $color_white: #fff;
 $color_prime: red;
 $color_grey: #e2e2e2;
@@ -227,7 +230,6 @@ img {
 .nombre {
   position: relative;
   width: auto;
-  background-color: white;
   color: red;
   display: flex;
 }
@@ -426,27 +428,6 @@ p {
 }
 
 
-@media only screen and (max-width:375px){
-.container-form{
-  display: flex;
-  justify-content: center;
-  align-items:center;
-}
-.registration-right{
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  flex-direction: column;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.login-box{
-
-  width: 99%;
-
-}
-}
 .example-margin {
 margin: 0 10px;
 }
@@ -474,3 +455,40 @@ margin-bottom: 0;
 .mat-expansion-panel-header-title {
   color: rgba(234, 69, 69, 0.87);
 }
+
+
+@media only screen and (max-width:375px){
+  .container-form{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .registration-right{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .login-box{
+  
+    width: 99%;
+  
+  }
+  
+  .mobile-navbar{
+    display: unset;
+    visibility: visible;
+  }
+  
+  .desktop-navbar{
+    display: none;
+    visibility: hidden;
+  }
+  .card{
+    height: 530px;
+    margin-top: 60px;
+  }
+  }

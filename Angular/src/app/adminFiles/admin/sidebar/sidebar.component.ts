@@ -6,6 +6,7 @@ import { Moment } from 'moment';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css'],
   styles: []
 })
 export class SidebarComponent implements OnInit {

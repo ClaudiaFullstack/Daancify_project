@@ -42,7 +42,7 @@ export class UserDetailModalComponent implements OnInit {
       password: ['', Validators.required],
       user_type: ['', Validators.required],
       dance_style_id: [''], // validadores ??
-      avatar: [''], // validadores ??
+      dance_style_name: [''], // validadores ??
     });
     this.userForm.patchValue(data);
     this.classService.getAllDanceStyle().subscribe((data) => {

@@ -1,47 +1,227 @@
-<div class="row">
-    <div class="col-12 col-md-5">
-        <div class="card">
-            <div class="card-body">
-                <div style="display: block">
-                    <canvas baseChart [data]="doughnutChartData1" [labels]="doughnutChartLabels1" [chartType]="doughnutChartType1">
-                    </canvas>
+<div class="bg-light h-100vh position-relative overflow-hidden">
+    <div class="p-5 h-100 position-relative z-index-2 overflow-auto py-3 animated bounceInUp">
+        <div class="row">
+
+            <h1 class="display-4 p-3">
+                <span class="text-muted">Daancify</span><br>
+                <span class="text-muted">Administración</span>
+            </h1>
+            <!-- Warnings (TODO CONTROLAR)-->
+            <div class="p-2 bg-warning text-black rounded m-3 p-3 shadow-sm text-center position-relative animated flipInX delay-1 overflow-hidden">
+                <div class="text-uppercase text-tracked mb-2">Alertas</div>
+                <i class="decorative-icon fas fa fa-exclamation-circle opacity-25 fa-5x animated infinite pulse slower"></i>
+                <pre class="bg-dark text-white rounded p-2"><code>Clase suspendida<br> En Daanciescuela</code></pre>
+            </div>
+            <!-- Ingresos Hoy (TODO CONTROLAR) -->
+            <div class="p-2 bg-white rounded p-3 m-3 shadow-sm animated flipInX delay-3">
+                <div class="text-uppercase text-tracked text-muted mb-2"></div>
+                <div class="badge badge-success text-size-2 text-monospace mx-auto">
+                    €0<span class="opacity-50 small">.00</span>
+                </div>
+                <div class="text-muted small mt-1">
+                    <span class="text-danger"><i class="fas fa fa-long-arrow-alt-down"></i>0%</span> vs promedio
                 </div>
             </div>
-        </div>
-    </div>
-
-
-    <!-- <div class="col-12 col-md-5">
-        <div class="card">
-            <div class="card-body">
-                <div style="display: block">
-                    <canvas baseChart [data]="doughnutChartData2" [labels]="doughnutChartLabels2" [chartType]="doughnutChartType2">
-                  </canvas>
+            <!-- USUARIOS (CONTROLADO)-->
+            <div class="p-2 bg-primary text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">
+                    Hasta ahora
                 </div>
+                <div class="display-4 text-monospace">{{ createrUsers?.count}}</div>
+                <small>Total Usuarios Creados</small>
+            </div>
+
+            <div class="p-2 bg-primary text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">
+                    Ahora mismo
+                </div>
+                <div class="display-4 text-monospace">{{ activeUsers?.count}}</div>
+                <small>Usuarios activos</small>
+            </div>
+            <div class="p-2 bg-primary text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">
+                    Hasta Ahora
+                </div>
+                <div class="display-4 text-monospace">{{ erasedUsers?.count}}</div>
+                <small>Usuarios Borrados</small>
+            </div>
+            <!-- Indicador de usuarios semanales (TODO INTEGRAR) -->
+            <div class="d-flex flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-4">
+                <div class="text-uppercase text-tracked text-muted mb-2">Usuarios esta semana</div>
+                <div class="d-flex justify-content-between">
+                    <div><span class="text-size-2 text-monospace">0</span>p</div>
+                    <div class="text-success pl-3 pt-1">
+                        <i class="fas fa fa-long-arrow-alt-up"></i><span class="text-monospace">0%</span>
+                        <div class="small text-muted">vs Semana pasada</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Indicador de usuarios mensuales (TODO INTEGRAR) -->
+            <div class="d-flex flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-4">
+                <div class="text-uppercase text-tracked text-muted mb-2">Usuarios este Mes</div>
+                <div class="d-flex justify-content-between">
+                    <div><span class="text-size-2 text-monospace">0</span>p</div>
+                    <div class="text-success pl-3 pt-1">
+                        <i class="fas fa fa-long-arrow-alt-up"></i><span class="text-monospace">0%</span>
+                        <div class="small text-muted">vs Mes pasado</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Indicador de usuarios Anuales (TODO INTEGRAR) -->
+            <div class="d-flex flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-4">
+                <div class="text-uppercase text-tracked text-muted mb-2">Usuarios este Año</div>
+                <div class="d-flex justify-content-between">
+                    <div><span class="text-size-2 text-monospace">0</span>p</div>
+                    <div class="text-success pl-3 pt-1">
+                        <i class="fas fa fa-long-arrow-alt-up"></i><span class="text-monospace">0%</span>
+                        <div class="small text-muted">vs Año pasado</div>
+                    </div>
+                </div>
+            </div>
+            <!-- CLASSES -->
+            <div class="p-2 bg-info text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">Hasta ahora</div>
+                <div class="display-4 text-monospace">{{ createdClasses?.count}}</div>
+                <small>Total Clases Creadas</small>
+            </div>
+            <div class="p-2 bg-info text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">Ahora mismo</div>
+                <div class="display-4 text-monospace">{{ activeClasses?.count}}</div>
+                <small>Clases activas</small>
+            </div>
+            <div class="p-2 bg-info text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">Hasta Ahora</div>
+                <div class="display-4 text-monospace">{{ erasedClasses?.count}}</div>
+                <small>Clases Borradas</small>
+            </div>
+            <div class="p-2 bg-secondary text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">Hasta Ahora</div>
+                <div class="display-4 text-monospace">{{ createdClasses2020?.count}}</div>
+                <small>Clases impartidas en 2020</small>
+            </div>
+
+            <!-- PROFESORES -->
+            <div class="p-2 bg-success text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">Hasta ahora</div>
+                <div class="display-4 text-monospace">{{ createdTeachers?.count}}</div>
+                <small>Total Profesores Creados</small>
+            </div>
+            <div class="p-2 bg-success text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">Ahora mismo</div>
+                <div class="display-4 text-monospace">{{ activeTeachers?.count}}</div>
+                <small>Profesores activos</small>
+            </div>
+            <div class="p-2 bg-success text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2">
+                <div class="text-uppercase text-tracked opacity-50 mb-2">Hasta Ahora</div>
+                <div class="display-4 text-monospace">{{ ErasedTeachers?.count}}</div>
+                <small>Profesores Borrados</small>
+            </div>
+            <!-- Indicador de rebote (si al cliente le gusta la web) (TODO INTEGRAR) -->
+            <div class="d-flex flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-5">
+                <div class="text-uppercase text-tracked text-muted mb-2">Bounce rate</div>
+                <div class="d-flex align-items-center text-size-3">
+                    <i class="fas fa fa-door-open opacity-25 mr-2"></i>
+                    <div class="text-monospace"><span class="text-size-2 ">0</span>%</div>
+                    <i class="fas fa fa-arrow-up text-danger ml-2"></i>
+                </div>
+            </div>
+            <!-- Tiempo en Página por usuarios (TODO INTEGRAR) -->
+            <div class="d-flex flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-6">
+                <div class="text-uppercase text-tracked text-muted mb-2">Tiempo Habitual en Página</div>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa fa-clock opacity-25 mr-2 text-size-3"></i>
+                    <!-- Enlazar con api -->
+                    <span class="text-size-2 text-monospace">0</span>
+                    <span class="text-size-2">m</span>
+                    <span class="text-size-2 text-monospace">00</span>
+                    <span class="text-size-2">s</span>
+                </div>
+                <div class="text-muted small">
+                    <span class="text-success text-monospace">
+            <i class="fas fa fa-long-arrow-alt-up"></i>0%</span>vs Semana pasada
+                </div>
+            </div>
+            <!-- Indicador de Balances (TODO INTEGRAR) -->
+            <div class="p-2 bg-white rounded p-3 m-3 shadow-sm animated flipInX delay-10">
+                <div class="text-uppercase text-tracked text-muted mb-2"> Balance</div>
+                <div class="text-muted">
+                    <i class="fas fa fa-long-arrow-alt-up text-success"></i>
+                    <span class="text-success text-size-2 text-monospace">0.02%</span> Este Mes
+                </div>
+                <span class="small">Ganancias:</span>
+                <span class="small text-monospace mx-auto">€0<span class="opacity-50">.00</span></span>
+            </div>
+            <!-- Sesiones por dispositivo (TODO INTEGRAR) -->
+            <div class="d-flex flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-7">
+                <div class="text-uppercase text-tracked text-muted mb-2">Sesión por dispositivos</div>
+                <div class="row text-center">
+                    <div class="col">
+                        <!-- Por Movil -->
+                        <i class="fas fa fa-mobile mb-2 text-size-2"></i>
+                        <div class="text-monospace">0%</div>
+                    </div>
+                    <div class="col">
+                        <!-- Por Tablet -->
+                        <i class="fas fa fa-tablet opacity-50 mb-2 text-size-2"></i>
+                        <div class="text-monospace text-secondary">0%</div>
+                    </div>
+                    <div class="col">
+                        <!-- Por ordenador -->
+                        <i class="fas fa fa-laptop opacity-25 mb-2 text-size-2"></i>
+                        <div class="text-monospace text-secondary">0%</div>
+                    </div>
+                </div>
+            </div>
+            <!--       Comentarios (TODO INTEGRAR)-->
+            <div class="d-flex position-relative overflow-hidden flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-9">
+                <div class="text-uppercase text-tracked text-muted mb-2">últimos Comentarios</div>
+                <i class="fas fa fa-smile opacity-25 fa-5x text-warning decorative-icon"></i>
+                <div class="d-flex justify-content-between">
+                    <div><img class="d-block rounded-circle" width="32" src="https://avatars3.githubusercontent.com/u/2906365?s=460&v=4" />
+                    </div>
+                    <div class="pl-3 pt-1">
+                        Me encanta Daancify<br /> Nada más que decir 😌
+                        <a class="d-block mt-1 small opacity-75" href="mailto:RodrigoHenriquez@gmail.com">Responderle</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Health Status indicator (TODO INTEGRAR)-->
+            <div class="d-flex flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-11">
+                <div class="text-uppercase text-tracked text-muted mb-2">Estados</div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div><i class="fas fa-database"></i> Base de Datos</div>
+                    <i class="fas fa-circle fa-xs text-danger"></i>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div><i class="fas fa-server"></i> API</div>
+                    <i class="fas fa-circle fa-xs text-warning animated infinite flash slower"></i>
+                </div>
+            </div>
+            <!-- Top referencias (TODO INTEGRAR)-->
+            <div class="d-flex flex-column p-3 m-3 bg-white shadow-sm rounded animated flipInX delay-8">
+                <div class="text-uppercase text-tracked text-muted mb-2">Top Referencias</div>
+
+                <div class="opacity-45">
+                    <i class="fas fa fa-caret-up text-success"></i>
+                    <span class="mx-1 text-monospace">3%</span>
+                    <a href="http://google.es">google.es</a>
+                </div>
+                <div class="opacity-60">
+                    <i class="fas fa fa-caret-down text-danger"></i>
+                    <span class="text-secondary mx-1 text-monospace">2%</span>
+                    <a href="http://facebook.es">facebook.es</a>
+                </div>
+                <div class="opacity-75"><i class="text-muted">–</i>
+                    <span class="text-secondary mx-1 text-monospace">1%</span>
+                    <a href="http://instagram.es">instagram.es</a>
+                </div>
+            </div>
+            <!--    Decoración-->
+            <i class="position-absolute z-index-1 fas fa-tachometer-alt text-secondary opacity-25 not-animated infinite pulse slower" style="bottom: 0.25em; right: -0.5em; font-size: 20em;"></i>
+            <i class="position-absolute fas fa-tachometer-alt text-secondary opacity-25 not-animated infinite pulse slower delay-2s" style="bottom: -0.25em; right: 1em; font-size: 15em;"></i>
+            <div class="small mx-3 my-3 text-muted">
+                Creado con Bootstrap para Daancify
             </div>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12 col-md-5">
-        <div class="card">
-            <div class="card-body">
-                <div style="display: block">
-                    <canvas baseChart [data]="doughnutChartData3" [labels]="doughnutChartLabels3" [chartType]="doughnutChartType3">
-                  </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-5">
-        <div class="card">
-            <div class="card-body">
-                <div style="display: block">
-                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                </canvas>
-                </div>
-                <button mat-button mat-raised-button color="primary" (click)="randomize()">Actualizar</button>
-            </div>
-        </div>
-    </div>
-</div> -->

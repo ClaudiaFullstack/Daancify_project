@@ -1,21 +1,21 @@
 export class Class {
-    class_id:number;
+    class_id: number;
     dance_school_id: number;
-    class_name:string;
-    location:string;
-    description:string;
-    modality:number;
-    price:number;
-    start_date:string;
-    end_date:string;
-    start_hour:string;
-    end_hour:string;
-    periodicity:string;
-    level:number;
-    dance_style_id:number;
+    class_name: string;
+    location: string;
+    description: string;
+    modality: number;
+    price: number;
+    start_date: string;
+    end_date: string;
+    start_hour: string;
+    end_hour: string;
+    periodicity: string;
+    level: number;
+    dance_style_id: number;
 
 
-  
+
 
 
     constructor(item?: any) {

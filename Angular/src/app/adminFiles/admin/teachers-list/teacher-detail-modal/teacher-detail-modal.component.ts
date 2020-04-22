@@ -30,15 +30,15 @@ export class TeacherDetailModalComponent implements OnInit {
   ) {
     this.teacherForm = fb.group({
       user_id: [''], // validadores ??
-      user_name: [''],
+      user_name: ['', Validators.required],
       name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', Validators.required],
       phone: ['', Validators.required],
       password: ['', Validators.required],
       user_type: ['', Validators.required],
-      dance_style_id: [''], // validadores ??
-      avatar: [''], // validadores ??
+      dance_style_id: ['', Validators.required],
+      dance_style_name: ['', Validators.required],
     });
     this.teacherForm.patchValue(data);
     this.classService.getAllDanceStyle().subscribe((data) => {
@@ -90,16 +90,5 @@ export class TeacherDetailModalComponent implements OnInit {
 
   cleanForm() {
     this.teacherForm.reset();
-  }
-  onFileSelected() {
-    const inputNode: any = document.querySelector('#file');
-
-    if (typeof FileReader !== 'undefined') {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.srcResult = e.target.result;
-      };
-      reader.readAsArrayBuffer(inputNode.files[0]);
-    }
   }
 }

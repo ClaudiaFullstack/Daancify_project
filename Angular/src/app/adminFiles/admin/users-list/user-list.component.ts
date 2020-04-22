@@ -19,9 +19,7 @@ export class UsersListComponent implements OnInit {
     private router: Router,
     private routes: ActivatedRoute,
     public dialog: MatDialog,
-  ) {
-    console.log("dsada")
-  }
+  ) {}
   ngOnInit(): void {
     this.recharge();
   }
@@ -35,9 +33,6 @@ export class UsersListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
     });
-
-    // this.router.navigate(['./', user.id], { relativeTo: this.routes });
-    // this.router.navigate(['/users/', user.id]);
   }
 
   search(user: User) {
@@ -48,7 +43,6 @@ export class UsersListComponent implements OnInit {
   }
 
   newUser() {
-
     const dialogRef = this.dialog.open(UserDetailModalComponent, {
       width: '650px',
       data: new User(),
@@ -59,7 +53,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  clear(){
+  clear() {
     this.recharge();
   }
 

@@ -10,7 +10,8 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./teachers-grid.component.scss']
 })
 export class TeachersGridComponent implements OnInit {
-  displayedColumns = ['user_id', 'user_name', 'name', 'last_name', 'email', 'phone', 'password', 'user_type', 'dance_style_id', 'avatar'];
+  displayedColumns = ['user_id', 'user_name', 'name', 'last_name', 'email',
+    'phone', 'password', 'user_type', 'dance_style_id', 'dance_style_name'];
   theUsersListDataSource: MatTableDataSource<User> = new MatTableDataSource<User>();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

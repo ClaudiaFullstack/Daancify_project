@@ -1,0 +1,9 @@
+.left-sidebar {
+    z-index: -500px!important
+}
+
+.barra {
+    z-index: 0;
+    display: flex;
+    position: relative;
+}

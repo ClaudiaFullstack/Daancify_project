@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { map } from 'rxjs/operators';
-import { Chart } from 'src/app/models/Chart';
+import { Graficas } from 'src/app/models/graficas';
+
 
 
 @Injectable({
@@ -14,103 +15,75 @@ export class ChartService {
 constructor(private httpClient: HttpClient) { }
 
  // Obtener count usuarios creados (Borrados y activos)
- getCreatedUsers(): Observable<any> {
-  const url = 'http://localhost:3000/chart';
+ getCreatedUsers(): Observable<Graficas> {
+  const url = 'http://localhost:3000/chart/createdUsers';
   return this.httpClient
-    .get<any>(url);
+    .get<Graficas>(url);
 }
-// getCreatedUsers(): Observable<any> {
-//   return this.httpClient.get('http://localhost:3000/chart');
-// }
-
 
  // Obtener count (Usuarios Activos)
- getActiveUsers(): Observable<Chart[]> {
+ getActiveUsers(): Observable<Graficas[]> {
   const url = 'http://localhost:3000/chart/activeUsers';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
  // Users (Usuarios Borrados)
- getErasedUsers(): Observable<Chart[]> {
+ getErasedUsers(): Observable<Graficas[]> {
   const url = 'http://localhost:3000/chart/erasedUsers';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
  // Classes (Activas y borradas)
- getCreatedClasses(): Observable<Chart[]> {
+ getCreatedClasses(): Observable<Graficas[]> {
   const url = 'http://localhost:3000/chart/createdClasses';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
 // Class (Activas)
- getActiveClasses(): Observable<Chart[]> {
+ getActiveClasses(): Observable<Graficas[]> {
   const url = 'http://localhost:3000/chart/activeClasses';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
 // Class (Borradas)
- getErasedClasses(): Observable<Chart[]> {
+ getErasedClasses(): Observable<Graficas[]> {
   const url = 'http://localhost:3000/chart/erasedClasses';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
 // clases realizadas en 2020
- getCreatedClasses2020(): Observable<Chart[]> {
-  const url = 'http://localhost:3000/Chart';
+ getCreatedClasses2020(): Observable<Graficas[]> {
+  const url = 'http://localhost:3000/Chart/createdClasses2020';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
 // Teachers (Borrados y activos)
- getcreatedTeachers(): Observable<Chart[]> {
-  const url = 'http://localhost:3000/chart/createdClasses2020';
+ getCreatedTeachers(): Observable<Graficas[]> {
+  const url = 'http://localhost:3000/chart/createdTeachers';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
 // Teachers (Activos)
- getActiveTeachers(): Observable<Chart[]> {
-  const url = 'http://localhost:3000/chart/createdTeachers';
+ getActiveTeachers(): Observable<Graficas[]> {
+  const url = 'http://localhost:3000/chart/activeTeachers';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
 // Teachers (Borrados)
- getErasedTeachers(): Observable<Chart[]> {
+ getErasedTeachers(): Observable<Graficas[]> {
   const url = 'http://localhost:3000/chart/erasedTeachers';
   return this.httpClient
-    .get<Chart[]>(url)
-    .pipe(map((x) => x.map((u) => new Chart(u))));
+    .get<Graficas[]>(url);
 }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

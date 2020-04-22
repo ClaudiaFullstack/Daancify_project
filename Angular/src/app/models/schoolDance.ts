@@ -1,6 +1,6 @@
 export class SchoolDance {
-    dance_school_id:number;
-    owned_by_user_id:number;
+    dance_school_id: number;
+    owned_by_user_id: number;
     dance_school_name: string;
     address: string;
     description: string;

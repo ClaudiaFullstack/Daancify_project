@@ -63,6 +63,7 @@ controller.getUserById = (req, res) => {
     AND dance_style.dance_style_id = dance_style_user.dance_style_id 
     AND user.logical_erase = 0 
     AND user.user_id = ${user_id}`;
+   
 
     connection.query(sql, (err, results) => {
         if (err) {
@@ -122,11 +123,13 @@ controller.updateUser = (req, res) => {
     let { name, user_name, last_name, email, phone, user_type, password, dance_style_id } = req.body;
     let updatesql = "UPDATE user set? WHERE user_id =";
     let updatesql2 = "UPDATE dance_style_user set? WHERE user_id =";
-
+    console.log(req.body)
     connection.query(updatesql + user_id, { name, user_name, last_name, email, phone, password, user_type },
         (err, results) => {
-            connection.query(updatesql2, { dance_style_id }, (error, danceResult) => {
-                res.send("ok");
+            console.log(results)
+            connection.query(updatesql2 + user_id, { dance_style_id }, (error, danceResult) => {
+                console.log(danceResult)
+                res.send(danceResult);
             });
         })
 

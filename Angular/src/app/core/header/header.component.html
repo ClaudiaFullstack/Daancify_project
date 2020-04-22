@@ -159,19 +159,35 @@
 
                 <li *ngIf="user" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user"
-                            class="profile-pic" /></a>
+                        aria-haspopup="true" aria-expanded="false">
+                        <ng-container *ngIf="user.user.avatar !== null">
+                            <img [src]="'http://localhost:3000/uploads/'+ user.user.avatar" alt="user"
+                            class="profile-pic" />
+                        </ng-container>
+                        <ng-container *ngIf="user.user.avatar === null">
+                            <img src="assets/images/icon/user.png" alt="user"
+                            class="profile-pic" />
+                        </ng-container>
+                        </a>
                     <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img [src]="'../../../../../API/public/uploads/'+ user.user.avatar" alt="user">
+                                    <div class="u-img">
+                                        <ng-container *ngIf="user.user.avatar !== null">
+                                            <img [src]="'http://localhost:3000/uploads/'+ user.user.avatar" alt="user"
+                                            class="profile-pic" />
+                                        </ng-container>
+                                        <ng-container *ngIf="user.user.avatar === null">
+                                            <img src="assets/images/icon/user.png" alt="user"
+                                            class="profile-pic" />
+                                        </ng-container>
                                     </div>
                                     <div class="u-text">
                                         <h4><span class="user"> {{user.user.name}}{{user.user.last_name}}
                                             </span></h4>
                                         <p class="text-muted"><span class="user" *ngIf="user">{{user.user.email}}</span>
-                                        </p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">Ver
+                                        </p><a [routerLink]="['/profile',user.user.user_id]" class="btn btn-rounded btn-danger btn-sm">Ver
                                             Perfil</a>
                                     </div>
                                 </div>

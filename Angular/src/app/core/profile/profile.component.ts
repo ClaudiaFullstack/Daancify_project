@@ -7,6 +7,8 @@ import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from '../services/class.service';
 import Swal from 'sweetalert2';
+import { AuthService } from '../authentication/auth.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -25,10 +27,12 @@ export class ProfileComponent implements OnInit {
   images: any;
   imgForm: FormGroup;
 
+  theUser: User;
+
 
   constructor(fb: FormBuilder, private userService: UserService, private routes: ActivatedRoute, private classService: ClassService,
-    private router: Router) {
-
+    private router: Router, private authService: AuthService, private loginService: LoginService) {
+    this.theUser = authService.getUser().user;
     this.classService.getAllDanceStyle().subscribe((data) => {
       this.dance_styles = data;
     });
@@ -75,8 +79,13 @@ export class ProfileComponent implements OnInit {
     const formData = new FormData();
     formData.append('avatar', this.images);
     this.userService.updateFile(formData, this.id).subscribe(data => {
-      console.log(data);
+
+
     })
+    this.authService.logout()
+    this.router.navigate(['/login']);
+
+
   }
 
   onUpload(event) {
@@ -100,21 +109,10 @@ export class ProfileComponent implements OnInit {
   }
 
   private alert() {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      onOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-
-    Toast.fire({
+    Swal.fire({
+      title: '!Perfil actualizado¡',
       icon: 'success',
-      title: '¡Perfil modificado!'
+      confirmButtonText: 'Cerrar'
     })
   }
 }

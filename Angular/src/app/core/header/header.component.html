@@ -59,9 +59,9 @@
                     </div>
                     <div *ngIf="user.user.user_type == 1">
                         <span><a class="redButton" [routerLink]="['/admin']"> Administración </a></span>
-                        <span><a class="redButton" [routerLink]="['/admin/user']"> Usuarios</a></span>
-                        <span><a class="redButton" [routerLink]="['/admin/teacher']"> Profesores</a></span>
-                        <span><a class="redButton" [routerLink]="['/admin/class']"> Clases</a></span>
+                        <span><a class="redButton" [routerLink]="['/admin/user']" routerLinkActive="active"> Usuarios</a></span>
+                        <span><a class="redButton" [routerLink]="['/admin/teacher']" routerLinkActive="active"> Profesores</a></span>
+                        <span><a class="redButton" [routerLink]="['/admin/class']" routerLinkActive="active"> Clases</a></span>
                     </div>
                 </div>
                 

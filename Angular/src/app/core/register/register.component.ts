@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit, OnChanges {
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
 
-// Escuela Form
+  // Escuela Form
   danceSchoolForm: FormGroup;
 
   matcher = new MyErrorStateMatcher(); // < -- todos los form
@@ -67,39 +67,15 @@ export class RegisterComponent implements OnInit, OnChanges {
   ) {
     // Formulario de Registro
     this.registrationForm = fb.group({
-      user_name: [''],
-      name: [''],
-      last_name: [''],
+      user_name: ['',[Validators.required]],
+      name: ['',[Validators.required]],
+      last_name: ['',[Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       phone: [''],
-      password: [''],
+      password: ['',[Validators.required]],
       user_type: [''],
       dance_style_id: [''],
       avatar: [''],
-    });
-    // Formulario de Clases
-    this.classForm = fb.group({
-      dance_school_id: [""],
-      location: [""],
-      description: [""],
-      modality: [""],
-      price: [""],
-      start_date: [""],
-      end_date: [""],
-      start_hour: [""],
-      end_hour: [""],
-      periodicity: [""],
-      level: [''],
-      dance_style_id: [""],
-    });
-    // Formulario de escuela de danza
-    this.danceSchoolForm = fb.group({
-      owned_by_user_id: [''],
-      dance_school_name: [''],
-      address: [''],
-      description: [''],
-      phone_dance_school: [''],
-      email: ['', [Validators.email, Validators.required]],
     });
 
     // Para recoger todas las escuelas de danza para el form de class (select)
@@ -157,7 +133,7 @@ export class RegisterComponent implements OnInit, OnChanges {
     const newDanceSchool = new SchoolDance(this.danceSchoolForm.value);
     // Le añadimos el valor del id que recogimos antes
     newDanceSchool.owned_by_user_id = owned_by_user_id;
-    this.schoolDanceService.createDanceSchool(newDanceSchool).subscribe(data =>{
+    this.schoolDanceService.createDanceSchool(newDanceSchool).subscribe(data => {
       console.log(data);
       // Aqui poner las redirecciones
     })
@@ -166,4 +142,5 @@ export class RegisterComponent implements OnInit, OnChanges {
   SchoolDance() {
     this.schoolDanceHave = !this.schoolDanceHave;
   }
+
 }

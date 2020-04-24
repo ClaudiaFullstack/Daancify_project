@@ -60,7 +60,6 @@ export class TeacherDetailModalComponent implements OnInit {
   }
 
   saveClick() {
-    console.log(this.teacherForm);
     if (this.teacherForm.valid) {
       const teacherEdit = new User(this.teacherForm.value);
       this.teacherModel.updateUser(teacherEdit).subscribe((x) => { // hacer recargar y que entre a ok

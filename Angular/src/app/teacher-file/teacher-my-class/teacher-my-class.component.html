@@ -105,8 +105,7 @@
     <h1>No tienes ninguna clase creada</h1>
 </div>
 <div *ngIf="classList?.length">
-    <br>
-    <h1 class="title-margin desktop-navbar">¡BIENVENIDO {{ user.name }}! <span class="badge badge-secondary">Profesor</span></h1>
+    <h1 class="title-margin desktop-navbar">¡BIENVENID@, {{ user.name }}! <span class="badge badge-secondary">Profesor</span></h1>
     <div class="container" *ngFor="let card of obs | async">
         <div class="card desktop-navbar">
             <div class="card__image-container">
@@ -163,6 +162,7 @@
             </div>
         </div>
     </div>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    
 </div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 <!-- Fin - Contenido del la lista de clases que ha creado un profesor -->

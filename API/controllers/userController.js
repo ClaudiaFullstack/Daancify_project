@@ -168,8 +168,8 @@ controller.search = (req, res) => {
     let sqlAll = "SELECT * FROM user WHERE logical_erase = 0";
     let sqlFinal ="";
     console.log(req.body)
-
-    if(user_name != ""){
+  
+    if(user_name != null && user_name != ''){
         if(sqlFinal == ""){
             sqlFinal =` AND user_name = "${user_name}"`;
         }else{
@@ -177,28 +177,28 @@ controller.search = (req, res) => {
         }
         
     }
-    if(name != ""){
+    if(name != null && name != '' ){
         if(sqlFinal == ""){
             sqlFinal =` AND name = "${name}"`;
         }else{
             sqlFinal =sqlFinal + ` AND name = "${name}"`;
         }
     }
-    if(last_name != ""){
+    if(last_name != null && last_name != '' ){
         if(sqlFinal == ""){
         sqlFinal = ` AND last_name = "${last_name}"`;
     }else{
         sqlFinal = sqlFinal + ` AND last_name = "${last_name}"`;
     }
     }
-    if(phone != ""){
+    if(phone != null && phone != '' ){
         if(sqlFinal == ""){
         sqlFinal =` AND phone = "${phone}"`;
     }else{
         sqlFinal = sqlFinal +` AND phone = "${phone}"`;
     }
     }
-    if(email != ""){
+    if(email != null && email != '' ){
         if(sqlFinal == ""){
         sqlFinal =` AND email = "${email}"`;
     }else{

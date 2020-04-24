@@ -242,7 +242,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 75vh;
+  height: 55vh;
 }
 .card {
   position: relative;
@@ -499,5 +499,9 @@ margin-bottom: 0;
 
   .space{
     margin-left: 0 !important;
+  }
+  .container {
+
+    height: 75vh;
   }
   }

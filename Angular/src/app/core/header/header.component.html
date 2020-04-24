@@ -48,8 +48,8 @@
                 <div *ngIf="user">
                     <div *ngIf="user.user.user_type == 2">
                         <span><a class="redButton" [routerLink]="['home']" routerLinkActive="active"> Inicio </a></span>
-                        <span><a class="redButton" [routerLink]="['/teacher/my-class']" > Mis clases </a></span>
-                        <span><a class="redButton" [routerLink]="['/teacher/dance-school']"> Escuela</a></span>
+                        <span><a class="redButton" [routerLink]="['/teacher/my-class']" routerLinkActive="active" > Mis clases </a></span>
+                        <span><a class="redButton" [routerLink]="['/teacher/dance-school']" routerLinkActive="active"> Escuela</a></span>
                     </div>
                     <div *ngIf="user.user.user_type == 3">
                         <span><a class="redButton" [routerLink]="['/home']" routerLinkActive="active"> Inicio </a></span>
@@ -170,7 +170,9 @@
                         <ng-container *ngIf="user.user.avatar === null">
                             <img src="assets/images/icon/user.png" alt="user"
                             class="profile-pic" />
-                            
+                            <div class="arrow-profile">
+                                <img src="assets/images/icon/down-arrow.png" alt="">
+                            </div>
                         </ng-container>
                         </a>
                         

@@ -244,7 +244,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 75vh;
+  height: 55vh;
 }
 .card {
   position: relative;
@@ -422,5 +422,9 @@ p {
   .buttom-form{
     margin-left: 60% !important;
     margin-bottom: 10px;
+  }
+  .container {
+
+    height: 75vh;
   }
   }

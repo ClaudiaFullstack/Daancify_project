@@ -92,7 +92,7 @@ export class TeacherMyClassComponent implements OnInit, OnChanges {
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
-    
+
   }
 
 
@@ -101,30 +101,26 @@ export class TeacherMyClassComponent implements OnInit, OnChanges {
     if (!this.schoolDanceHave) {
       newClass.dance_school_id = null;
     }
+    console.log(newClass);
     if (newClass.class_id) {
       this.classService.updateClass(newClass).subscribe(data => {
-        
+        this.recharge();
       })
     } else {
       const teacher_id = this.user.user_id;
       this.classService.createClass(newClass, teacher_id).subscribe((data) => {
-        this.panelOpenState = false;
-    
+        this.recharge();
       });
     }
     this.recharge();
   }
   editClass(card) {
-    
+
     card.start_date = card.start_date.substr(0, 10);
     card.end_date = card.end_date.substr(0, 10);
-    // card.start_date = start_date;
-    // card.end_date = end_date;
-
 
     this.classForm.patchValue(card);
-    console.log(this.classForm.value)
-    // const newClass = new Class(this.classForm.value);
+
     this.panelOpenState = true;
   }
 
@@ -143,6 +139,7 @@ export class TeacherMyClassComponent implements OnInit, OnChanges {
   private recharge() {
     this.classService.getClassTeacher(this.user.user_id).subscribe(data => {
       this.classList = data;
+      console.log(data);
       this.dataSource = new MatTableDataSource<Class>(this.classList);
       this.dataSource.paginator = this.paginator;
       this.obs = this.dataSource.connect();

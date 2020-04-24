@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { SignUp } from 'src/app/models/signUp';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/core/authentication/auth.service';
+import { StudentClass } from 'src/app/models/studentClass';
 
 @Component({
   selector: 'app-student-teacher-class',
@@ -19,7 +20,7 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
 export class StudentTeacherClassComponent implements OnInit {
   id: number;
   theUser: User;
-  classList: Class[];
+  classList: StudentClass[];
   // Paginación
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   obs: Observable<any>;
@@ -34,6 +35,7 @@ export class StudentTeacherClassComponent implements OnInit {
 
       this.classService.getClassTeacher(this.id).subscribe((data) => {
         this.classList = data;
+        console.log(data);
         this.dataSource = new MatTableDataSource<Class>(this.classList);
         this.dataSource.paginator = this.paginator;
         this.obs = this.dataSource.connect();

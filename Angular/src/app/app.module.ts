@@ -9,7 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { TeacherClassComponent } from './teacher-class/teacher-class.component';
 import { AdminModule } from './adminFiles/admin/admin.module';
-import { NopagefoundComponent } from '../../../../PROYECTO/daancify/daancify/src/app/nopagefound/nopagefound.component';
+import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+
 
 
 

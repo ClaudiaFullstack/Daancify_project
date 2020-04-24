@@ -2,3 +2,24 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-paginator-page-size-label {
+    color: red !important;
+}
+
+.mat-select-arrow {
+    color: red !important;
+}
+.mat-paginator-range-actions {
+    color: red !important;
+}
+.mat-button .mat-button-wrapper>*, .mat-flat-button .mat-button-wrapper>*, .mat-stroked-button .mat-button-wrapper>*, .mat-raised-button .mat-button-wrapper>*, .mat-icon-button .mat-button-wrapper>*, .mat-fab .mat-button-wrapper>*, .mat-mini-fab .mat-button-wrapper>* {
+    color: red !important;
+}
+
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+    color: red !important;
+}
+
+.badge-secondary {
+    background-color: red !important;
+}

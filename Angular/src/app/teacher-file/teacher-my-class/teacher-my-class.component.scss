@@ -1,5 +1,10 @@
 
+
+
 /* CSS CARD */
+.margin-buttom{
+  margin-left: 15px;
+}
 .mobile-navbar{
   display: none;
   visibility: vis;
@@ -456,7 +461,7 @@ margin-bottom: 0;
   color: rgba(234, 69, 69, 0.87);
 }
 
-
+// CSS RESPONSIVE
 @media only screen and (max-width:375px){
   .container-form{
     display: flex;
@@ -490,5 +495,9 @@ margin-bottom: 0;
   .card{
     height: 530px;
     margin-top: 60px;
+  }
+
+  .space{
+    margin-left: 0 !important;
   }
   }

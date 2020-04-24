@@ -23,10 +23,10 @@ export class ClassService {
         return this.httpClient.get<DanceStyle>(url);
     }
 
-    getClassTeacher(teacher_id): Observable<Class[]> {
+    getClassTeacher(teacher_id): Observable<StudentClass[]> {
         const url = `http://localhost:3000/class/teacher/${teacher_id}`;
 
-        return this.httpClient.get<Class[]>(url);
+        return this.httpClient.get<StudentClass[]>(url);
     }
 
     getAllClaseTime(teacher_id): Observable<Class> {

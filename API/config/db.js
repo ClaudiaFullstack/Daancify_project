@@ -2,7 +2,7 @@ var mysql = require('../node_modules/mysql');
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '',
     database: 'daancify',
 });
 

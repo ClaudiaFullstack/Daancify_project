@@ -69,6 +69,7 @@ export class StudentClassComponent implements OnInit {
     signUp.class_id = class_id;
     signUp.user_id = user_id;
 
+
     this.classService.seeRegister(signUp).subscribe(data => {
       if (data.length) {
 

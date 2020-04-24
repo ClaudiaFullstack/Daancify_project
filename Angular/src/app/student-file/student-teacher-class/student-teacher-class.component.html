@@ -1,7 +1,7 @@
 <br>
     <h2 *ngIf="!classList?.length">No tiene ninguna clase </h2>
     <div class="container" *ngFor="let card of obs | async">
-        <div class="card">
+        <div class="card desktop-navbar">
             <div class="card__image-container">
                 <img class="card__image" src="./../../../assets/images/photos/ck.jpg" alt="" />
             </div>
@@ -15,13 +15,18 @@
             </svg>
             <div class="card__content">
                 <h2 class="nombre">{{card?.class_name}}</h2>
-                <p class="lugar"><span class="title-text">Impartido por:</span>{{card?.name}}</p>
+                <p class="lugar"><span class="title-text">IMPARTIDO:</span>{{card?.name}}</p>
                 <p class="lugar"><span class="title-text">LUGAR:</span> {{card?.location}}</p>
             </div>
         </div>
         <div class="card-group">
             <div class="card">
                 <div class="card-body">
+                    <div class="card__content mobile-navbar">
+                        <h2 class="nombre">{{card?.class_name}}</h2>
+                        <p class="lugar"><span class="title-text">IMPARTIDO:</span>{{card?.name}}</p>
+                        <p class="lugar"><span class="title-text">LUGAR:</span> {{card?.location}}</p>
+                    </div>
                     <h3 class="card-title"></h3>
                     <div class="tipoDanzas">
                         <h2 class="estilo">{{card.dance_style_name}}</h2>

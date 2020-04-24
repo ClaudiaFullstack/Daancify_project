@@ -1,5 +1,5 @@
-<br>
-    <h1 class="title-margin desktop-navbar" >¡BIENVENIDO {{ theUser.name }}! <span class="badge badge-secondary">Estudiante</span></h1>
+
+    <h1 class="title-margin desktop-navbar" >¡BIENVENID@, {{ theUser.name }}! <span class="badge badge-secondary">Estudiante</span></h1>
     <h2 *ngIf="!classList?.length">No estas apuntado a ninguna clase</h2>
     <div class="container" *ngFor="let card of obs | async">
         <div class="card desktop-navbar">
@@ -16,7 +16,7 @@
             </svg>
             <div class="card__content">
                 <h2 class="nombre">{{card?.class_name}}</h2>
-                <p class="lugar"><span class="title-text">Impartido por:</span>{{card?.name}}</p>
+                <p class="lugar"><span class="title-text">IMPARTIDO:</span>{{card?.name}}</p>
                 <p class="lugar"><span class="title-text">LUGAR:</span> {{card?.location}}</p>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="card__content mobile-navbar">
                         <h2 class="nombre">{{card?.class_name}}</h2>
-                        <p class="lugar"><span class="title-text">Impartido por:</span>{{card?.name}}</p>
+                        <p class="lugar"><span class="title-text">IMPARTIDO:</span>{{card?.name}}</p>
                         <p class="lugar"><span class="title-text">LUGAR:</span> {{card?.location}}</p>
                     </div>
                     <h3 class="card-title"></h3>

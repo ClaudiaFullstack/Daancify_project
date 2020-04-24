@@ -131,7 +131,7 @@ export class RegisterComponent implements OnInit, OnChanges {
     this.userService.saveUser(newUser).subscribe((x) => {
       console.log(x);
     });
-    // this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 
   createClass() {

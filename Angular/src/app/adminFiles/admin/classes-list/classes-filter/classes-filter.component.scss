@@ -22,3 +22,19 @@ mat-card {
 .padding {
     padding-top: 50px;
 }
+.space-buttom{
+    margin-right: 20px;
+  }
+
+  @media only screen and (max-width:375px){
+    .space-buttom{
+        margin-left: 16px;
+      }
+
+      .mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+        text-align: center;
+    }
+    .mat-card-header .mat-card-title {
+        margin-left: 38px;
+    }
+  }

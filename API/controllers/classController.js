@@ -213,12 +213,14 @@ controller.danceStyle = (req, res) => {
 controller.getClassTeacher = (req, res) => {
     let teacher_id = req.params.teacher_id;
     let sql = `SELECT * FROM class WHERE teacher_id = ${teacher_id}`;
-    let sqlAll = `SELECT * FROM class,dance_style_class,dance_style,time_table 
+    let sqlAll = `SELECT * FROM class,dance_style_class,dance_style,time_table,user 
     WHERE class.class_id = time_table.class_id 
     AND class.class_id = dance_style_class.class_id 
     AND dance_style.dance_style_id = dance_style_class.dance_style_id 
+    AND user.user_id = class.teacher_id
     AND class.teacher_id = ${teacher_id}
     AND class.logical_erase = 0
+    AND start_date >= NOW()
     `;
     console.log(teacher_id)
     connection.query(sqlAll,

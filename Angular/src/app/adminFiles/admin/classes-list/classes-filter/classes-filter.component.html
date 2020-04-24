@@ -32,13 +32,10 @@
                             {{dance_style.dance_style_name}}
                         </mat-option>
                     </mat-select>
-            
             </mat-form-field>
-
+                    <button mat-raised-button color="secondary" class="space-buttom" (click)="clearForm()">Limpiar</button>
+                    <button mat-raised-button color="primary" (click)="search()">Buscar</button>
         </form>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="secondary" (click)="clearForm()">Limpiar</button>
-        <button mat-raised-button color="primary" (click)="search()">Buscar</button>
-    </mat-card-actions>
+   
 </mat-card>

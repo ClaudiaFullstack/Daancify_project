@@ -22,7 +22,6 @@ margin-top: 10px;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  font-family: sans-serif;
   
 }
 .container-image{
@@ -119,7 +118,7 @@ margin-top: 10px;
     color:black;
     font-size: 30px;
     font-weight: bold;
-    font-family: cursive;
+    font-family:  sans-serif;
     .info-left-text{
       background-color:transparent;
       @media screen and (max-width: 400px){
@@ -129,7 +128,7 @@ margin-top: 10px;
             font-weight: bold;
             margin-bottom: 20px;
             text-align: center;
-            font-family: cursive;
+            font-family:  sans-serif;
         }}
 
 
@@ -153,7 +152,7 @@ margin-top: 10px;
     font-size: 45px;
     height: 150px;
     font-weight: bold;
-    font-family: cursive;
+    font-family:  sans-serif;
    
            
       p{
@@ -161,7 +160,7 @@ margin-top: 10px;
           font-weight: bold;
           margin-bottom: 20px;
           text-align: center;
-          font-family: cursive;
+          font-family:  sans-serif;
       }
 
 
@@ -234,19 +233,20 @@ margin-top: 10px;
       
   }
   .wsk-cp-text .category > span{
-    padding: 12px 30px;
+    // padding: 12px 30px;
     // border: 1px solid #313131;
-    background:#ff0f0f;
-    color:#fff;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     border-radius:27px;
     transition: all 0.05s ease-in-out;
+   
+    font-size: 23px;
+    color:red;
+    margin-top: 30px;
     
   }
   .wsk-cp-product:hover .wsk-cp-text .category > span{
     border-color:#ddd;
     box-shadow: none;
-    padding: 11px 28px;
+    // padding: 11px 28px;
   }
   .wsk-cp-product:hover .wsk-cp-text .category{
     margin-top: 0px;

@@ -1,6 +1,4 @@
-.shell{
-    padding:80px 0;
-  }
+
   .wsk-cp-product{
     background:whitesmoke;
     padding:15px;
@@ -60,12 +58,11 @@
   }
   .wsk-cp-text .category > span{
     padding: 12px 30px;
-    border: 1px solid #313131;
-    background:red;
     color:#fff;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     border-radius:27px;
     transition: all 0.05s ease-in-out;
+    text-shadow: 2px 2px 2px red;
+    font-size: 23px;
     
   }
   .wsk-cp-product:hover .wsk-cp-text .category > span{
@@ -87,6 +84,9 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     width:100%;
+    color:red;
+    
+    
   }
   .wsk-cp-text .description-prod p{
     margin:0;
@@ -104,7 +104,8 @@
   }
   .card-footer{
     padding: 25px 0 5px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid red;
+    background-color:whitesmoke !important;
   }
   .card-footer:after, .card-footer:before{
     content:'';
@@ -196,6 +197,8 @@
   .btn-primary.disabled {
     background: red;
     border:none;
+    width: 150px;
+    margin: auto;
   
   }
   .title{
@@ -204,4 +207,14 @@
     text-transform: uppercase;
     border:1px solid red;
     background-color: whitesmoke;
+  }
+  h1 {
+    background: whitesmoke;
+    color: red;
+    text-align: center;
+    padding: 0.5em;
+    border-top: 10px solid red;
+    .title-margin{
+      margin-bottom: 0 !important;
+    }
   }

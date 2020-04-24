@@ -11,7 +11,7 @@ export class AuthGuardStudent implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-        if (this.authService.isUserAuthenticated() && this.theUser === 3) {
+        if (this.authService.isUserAuthenticated() && this.theUser == 3) {
             return true;
         }
 

@@ -47,15 +47,15 @@
                 <!-- Cuando nos estas logeado -->
                 <div *ngIf="user">
                     <div *ngIf="user.user.user_type == 2">
-                        <span><a class="redButton" [routerLink]="['home']"> Inicio </a></span>
-                        <span><a class="redButton" [routerLink]="['/teacher/my-class']"> Mis clases </a></span>
+                        <span><a class="redButton" [routerLink]="['home']" routerLinkActive="active"> Inicio </a></span>
+                        <span><a class="redButton" [routerLink]="['/teacher/my-class']" > Mis clases </a></span>
                         <span><a class="redButton" [routerLink]="['/teacher/dance-school']"> Escuela</a></span>
                     </div>
                     <div *ngIf="user.user.user_type == 3">
-                        <span><a class="redButton" [routerLink]="['/home']"> Inicio </a></span>
-                        <span><a class="redButton" [routerLink]="['/student/class']"> Clases </a></span>
-                        <span><a class="redButton" [routerLink]="['/student/teacher']"> Profesor</a></span>
-                        <span><a class="redButton" [routerLink]="['/student/my-class']"> Mis cursos</a></span>
+                        <span><a class="redButton" [routerLink]="['/home']" routerLinkActive="active"> Inicio </a></span>
+                        <span><a class="redButton" [routerLink]="['/student/class']" routerLinkActive="active"> Clases </a></span>
+                        <span><a class="redButton" [routerLink]="['/student/teacher']" routerLinkActive="active"> Profesor</a></span>
+                        <span><a class="redButton" [routerLink]="['/student/my-class']" routerLinkActive="active"> Mis cursos</a></span>
                     </div>
                     <div *ngIf="user.user.user_type == 1">
                         <span><a class="redButton" [routerLink]="['/admin']"> Administración </a></span>
@@ -64,7 +64,7 @@
                         <span><a class="redButton" [routerLink]="['/admin/class']"> Clases</a></span>
                     </div>
                 </div>
-
+                
 
             </div>
 
@@ -163,12 +163,17 @@
                         <ng-container *ngIf="user.user.avatar !== null">
                             <img [src]="'http://localhost:3000/uploads/'+ user.user.avatar" alt="user"
                             class="profile-pic" />
+                            <div class="arrow-profile">
+                                <img src="assets/images/icon/down-arrow.png" alt="">
+                            </div>
                         </ng-container>
                         <ng-container *ngIf="user.user.avatar === null">
                             <img src="assets/images/icon/user.png" alt="user"
                             class="profile-pic" />
+                            
                         </ng-container>
                         </a>
+                        
                     <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                         <ul class="dropdown-user">
                             <li>
@@ -184,7 +189,7 @@
                                         </ng-container>
                                     </div>
                                     <div class="u-text">
-                                        <h4><span class="user"> {{user.user.name}}{{user.user.last_name}}
+                                        <h4><span class="user"> {{user.user.name}} {{user.user.last_name}}
                                             </span></h4>
                                         <p class="text-muted"><span class="user" *ngIf="user">{{user.user.email}}</span>
                                         </p><a [routerLink]="['/profile',user.user.user_id]" class="btn btn-rounded btn-danger btn-sm">Ver
@@ -199,24 +204,24 @@
                                 <li role="separator" class="divider"></li>
                                 <div *ngIf="user">
                                     <div *ngIf="user.user.user_type == 2">
-                                        <li><a class="redButton " [routerLink]="['home']"> Inicio </a></li>
-                                        <li><a class="redButton" [routerLink]="['/teacher/my-class']"> Mis clases </a>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['home']"> Inicio </a></li>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/teacher/my-class']"> Mis clases </a>
                                         </li>
-                                        <li><a class="redButton" [routerLink]="['/teacher/dance-school']"> Escuela</a>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/teacher/dance-school']"> Escuela</a>
                                         </li>
                                     </div>
                                     <div *ngIf="user.user.user_type == 3">
-                                        <li><a class="redButton" [routerLink]="['/home']"> Inicio </a></li>
-                                        <li><a class="redButton" [routerLink]="['/student/class']"> Clases </a></li>
-                                        <li><a class="redButton" [routerLink]="['/student/teacher']"> Profesor</a></li>
-                                        <li><a class="redButton" [routerLink]="['/student/my-class']"> Mis cursos</a>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/home']"> Inicio </a></li>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/student/class']"> Clases </a></li>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/student/teacher']"> Profesor</a></li>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/student/my-class']"> Mis cursos</a>
                                         </li>
                                     </div>
                                     <div *ngIf="user.user.user_type == 1">
-                                        <li><a class="redButton" [routerLink]="['/admin']"> Administración </a></li>
-                                        <li><a class="redButton" [routerLink]="['/admin/user']"> Usuarios</a></li>
-                                        <li><a class="redButton" [routerLink]="['/admin/teacher']"> Profesores</a></li>
-                                        <li><a class="redButton" [routerLink]="['/admin/class']"> Clases</a></li>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/admin']"> Administración </a></li>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/admin/user']"> Usuarios</a></li>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/admin/teacher']"> Profesores</a></li>
+                                        <li><a class="redButton buttom-mobile" [routerLink]="['/admin/class']"> Clases</a></li>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +232,7 @@
                 </li>
             </ul>
             <div class="buttons">
-                <span><a class="redButton" [routerLink]="['/login']" *ngIf="!user"> LOGIN </a></span>
+                <span><a class="redButton btn btn-primary btn-lg" [routerLink]="['/login']" *ngIf="!user"> LOGIN </a></span>
                 <!-- <span><a class="redButton" [routerLink]="['/register']"> REGISTER  </a></span> -->
 
 

@@ -1,5 +1,10 @@
 
-// Claudia
+// CSS 
+
+.mobile-navbar{
+  display: none;
+  visibility: vis;
+}
 .title-text{
     color:red;
   }
@@ -19,7 +24,6 @@
   .nombre {
     position: relative;
     width: auto;
-    background-color: white;
     color: red;
     display: flex;
   }
@@ -157,4 +161,44 @@
     background: whitesmoke;
     border: 2px solid red;
     width: 100px;
+  }
+  
+@media only screen and (max-width:375px){
+  .container-form{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .registration-right{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .login-box{
+  
+    width: 99%;
+  
+  }
+  
+  .mobile-navbar{
+    display: unset;
+    visibility: visible;
+  }
+  
+  .desktop-navbar{
+    display: none;
+    visibility: hidden;
+  }
+  .card{
+    height: 530px;
+    margin-top: 60px;
+  }
+
+  .space{
+    margin-left: 0 !important;
+  }
   }

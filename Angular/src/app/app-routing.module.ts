@@ -16,10 +16,10 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 
 const routes: Routes = [
 
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent },
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegisterComponent},
-  {path: 'profile/:id', component: ProfileComponent},
+  {path: 'profile/:id', component: ProfileComponent,canActivate: [AuthGuard]},
   {path: 'teacher-class/:id', component: TeacherClassComponent},
   {path: 'teacher', loadChildren: () => import('./teacher-file/teacher-file.module').then(m => m.TeacherFileModule) },
   {path: 'student', loadChildren: () => import('./student-file/student-file.module').then(m => m.StudentFileModule) },

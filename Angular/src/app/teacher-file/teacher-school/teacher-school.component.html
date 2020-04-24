@@ -62,13 +62,16 @@
                                 </mat-error>
                             </mat-form-field>
                         </p>
-                    </div>
-                    <div class="row container-form-buttom-submit">
-                        <div>
-                            <button mat-raised-button class="submit-button" (click)="createSchoolDance()"
-                                [disabled]="!danceSchoolForm.valid">Crear</button>
+                        <div class="row container-form-buttom-submit">
+                            <div class="buttom-box">
+                                <button mat-raised-button class="submit-button buttom-form" (click)="createSchoolDance()"
+                                    [disabled]="!danceSchoolForm.valid">Crear Escuela</button>
+
+                                <button mat-raised-button class="submit-button margin-buttom buttom-form" (click)="danceSchoolForm.reset()">Limpiar</button>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </form>
@@ -88,9 +91,9 @@
 
     <h1 class="title-margin">¡BIENVENIDO {{ user.name }}! <span class="badge badge-secondary">Profesor</span></h1>
     <div class="container" *ngFor="let card of obs | async">
-        <div class="card">
-            <div class="card__image-container">
-                <img class="card__image" src="./../../../assets/images/photos/ck.jpg" alt="" />
+        <div class="card desktop-navbar">
+            <div class="card__image-container ">
+                <img class="card__image" src="./../../../assets/images/photos/base-dance-school.jpg" alt="" />
             </div>
             <svg class="card__svg" viewBox="0 0 800 500">
                 <path
@@ -108,6 +111,10 @@
         <div class="card-group">
             <div class="card">
                 <div class="card-body">
+                    <div class="card__content mobile-navbar">
+                        <h2 class="nombre">{{card?.dance_school_name}}</h2>
+                        <p class="lugar">LUGAR: {{card?.address}}</p>
+                    </div>
                     <h3 class="card-title"></h3>
                     <div class="tipoDanzas">
                         <h2 class="estilo">Descripción</h2>
@@ -123,7 +130,7 @@
                                 (click)="editarDanceSchool(card)">Editar</a>
                         </div>
                         <div class="borrar"><a class="btn btn-primary btn-block hidden-xs"
-                                (click)="deleteDanceSchool(card.class_id)">Borrar</a>
+                                (click)="deleteDanceSchool(card.dance_school_id)">Borrar</a>
                         </div>
                     </div>
                     <br />

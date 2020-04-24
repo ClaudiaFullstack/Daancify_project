@@ -6,6 +6,16 @@ $color_prime: red;
 $color_grey: #e2e2e2;
 $color_grey_dark: #a2a2a2;
 
+.mobile-navbar{
+  display: none;
+  visibility: vis;
+}
+.buttom-box{
+  margin: auto;
+}
+.margin-buttom{
+  margin-left: 15px;
+}
 .blog-card {
   display: flex;
   flex-direction: column;
@@ -369,3 +379,48 @@ p {
 .mat-expansion-panel-header-title {
   color: rgba(234, 69, 69, 0.87);
 }
+
+@media only screen and (max-width:375px){
+  .container-form{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .registration-right{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .login-box{
+  
+    width: 99%;
+  
+  }
+  
+  .mobile-navbar{
+    display: unset;
+    visibility: visible;
+  }
+  
+  .desktop-navbar{
+    display: none;
+    visibility: hidden;
+  }
+  .card{
+    height: 530px;
+    margin-top: 60px;
+  }
+
+  .space{
+    margin-left: 0 !important;
+  }
+
+  .buttom-form{
+    margin-left: 60% !important;
+    margin-bottom: 10px;
+  }
+  }

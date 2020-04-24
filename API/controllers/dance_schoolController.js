@@ -73,6 +73,7 @@ controller.delete = (req,res)=>{
  
     connection.query(sql,
      (err,results)=>{
+       console.log(results)
        res.send(results);
    })
  }

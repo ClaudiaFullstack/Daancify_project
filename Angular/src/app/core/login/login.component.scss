@@ -1,7 +1,16 @@
 .full-page {
-  height: 100%;
+  height: 500px;
   display: flex;
+ 
+  @media only screen and (max-width: 900px)
+ {
+    height: 300px;
+    display: flex;
+    box-sizing: content-box;
 }
+    
+  }
+
 
 .login-card {
   margin: auto;
@@ -14,4 +23,57 @@ mat-form-field {
 
 button {
   width: 100%;
+  @media only screen and (max-width:736px){
+    width: 50%vw;;
+  }
+}
+
+
+// .foto{
+//   float: left;
+// display:flex;
+
+
+// }
+.padre{
+  width: 100vw;
+
+
+}
+.foto{
+  float: left;
+}
+
+
+@media only screen and (max-width:900px){
+  .foto{
+  display: none;
+  width: 200px;
+  height: 200px;
+
+
+}
+
+@media only screen and (max-width:700px){
+  .foto{
+  display: none;
+  width: 200px;
+  height: 200px;
+
+
+}
+}
+  
+ 
+@media only screen and (max-width:736px){
+  .login-card{
+    align-content: center;
+    width: 200px;
+    height: 200px;
+   
+
+
+
+  }
+}
 }

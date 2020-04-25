@@ -1,28 +1,49 @@
-<div class="full-page">
-    <mat-card class="login-card">
-        <mat-card-title>
-            Login
-        </mat-card-title>
-        <mat-card-content>
-            <form autocomplete=off>
-                <mat-form-field>
-                    <input matInput placeholder="Usuario" name="user" type="text" autocomplete="off" [(ngModel)]="user">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="Password" name="password" type="password" autocomplete="off" [(ngModel)]="password">
-                </mat-form-field>
-                <mat-error *ngIf="error">
-                    User Or Password not valid
-                </mat-error>
-            </form>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary" (click)="login(user, password)">
+
+<div class="padre">
+    <div class="foto">
+       
+      
+        <img src="../../../assets/images/photos/zumba4.png"  alt="" width="700" height="400">
+    
+    </div>
+    <div class="full-page">
+
+        <mat-card class="login-card">
+            <mat-card-title>
                 Login
-            </button>
-            <p>¿No estas registrado?
-                <a [routerLink]="['/registration']">Registrarse</a>
-            </p>
-        </mat-card-actions>
-    </mat-card>
-</div>
+            </mat-card-title>
+            <mat-card-content>
+                <form autocomplete=off>
+                    <mat-form-field>
+                        <input matInput placeholder="Usuario" name="user" type="text" autocomplete="off" [(ngModel)]="user">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Password" name="password" type="password" autocomplete="off" [(ngModel)]="password">
+                    </mat-form-field>
+                    <mat-error *ngIf="error">
+                        User Or Password not valid
+                    </mat-error>
+                </form>
+            </mat-card-content>
+        
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="login(user, password)">
+                    Login
+                </button>
+                <p>¿No estas registrado?
+                    <a [routerLink]="['/registration']">Registrarse</a>
+                </p>
+    
+    
+            </mat-card-actions>
+            
+        </mat-card>
+        
+    
+    </div>
+
+</div> 
+
+
+
+

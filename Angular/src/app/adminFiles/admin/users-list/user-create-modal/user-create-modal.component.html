@@ -1,0 +1,83 @@
+<h1 mat-dialog-title>Creación de usuario</h1>
+<div mat-dialog-content>
+    <form [formGroup]="userForm">
+        <mat-form-field>
+            <mat-label>Nombre De Usuario</mat-label>
+            <input type="text" matInput placeholder="Username" formControlName="user_name">
+            <mat-error *ngIf="userForm.controls['user_name'].invalid">
+                {{getError('user_name')}}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeHolder="Nombre" type="text" formControlName="name">
+            <mat-error *ngIf="userForm.controls['name'].invalid">
+                {{getError('name')}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Apellido</mat-label>
+            <input matInput placeHolder="Apellido" type="text" formControlName="last_name">
+            <mat-error *ngIf="userForm.controls['last_name'].invalid">
+                {{getError('last_name')}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" placeholder="Ex. pat@example.com" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="userForm.hasError('email','email') && !userForm.hasError('required','email')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="userForm.hasError('required','email')">
+                Email is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input matInput placeHolder="Teléfono" type="text" formControlName="phone">
+            <mat-error *ngIf="userForm.controls['phone'].invalid">
+                {{getError('phone')}}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput placeHolder="Password" type="text" formControlName="password">
+            <mat-error *ngIf="!userForm.controls['password'].valid">
+                {{getError('password')}}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Tipo de Usuario" formControlName="user_type">
+                <mat-option [value]="'3'">3- Estudiante</mat-option>
+                <mat-option [value]="'2'">2- Profesor</mat-option>
+                <mat-option [value]="'1'">1- Administrador</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!userForm.controls['user_type'].valid">
+                {{getError('user_type')}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Estilo de baile favorito</mat-label>
+            <mat-select formControlName="dance_style_id">
+                <mat-option *ngFor="let dance_style of dance_styles" [value]="dance_style.dance_style_id">
+                    {{dance_style.dance_style_name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="!userForm.controls['dance_style_id'].valid">
+                {{getError('dance_style_id')}}
+            </mat-error>
+
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancelClick()">Cancel</button>
+    <button mat-button (click)="cleanForm()">limpiar</button>
+    <button mat-raised-button class="submit-button" (click)="saveClick()" [disabled]="!userForm.valid">Crear</button>
+
+
+</div>

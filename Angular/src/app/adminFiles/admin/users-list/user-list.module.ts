@@ -11,7 +11,7 @@ import { UsersListComponent } from './user-list.component';
 import { UsersGridComponent } from './users-grid/users-grid.component';
 import { UsersFilterComponent } from './users-filter/users-filter.component';
 import { UserDetailModalComponent } from './user-detail-modal/user-detail-modal.component';
-
+import { UserCreateModalComponent } from './user-create-modal/user-create-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,8 @@ import { UserDetailModalComponent } from './user-detail-modal/user-detail-modal.
     UsersGridComponent,
     UsersFilterComponent,
     UserDetailModalComponent,
+    UserCreateModalComponent
+
 
 
   ],
@@ -28,7 +30,7 @@ import { UserDetailModalComponent } from './user-detail-modal/user-detail-modal.
     UsersGridComponent,
     UsersFilterComponent,
     UserDetailModalComponent,
-
+    UserCreateModalComponent
   ],
   imports: [
     CommonModule,

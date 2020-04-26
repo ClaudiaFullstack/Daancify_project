@@ -20,8 +20,11 @@ var upload = multer({ storage: storage })
 // Obtenemos todos los usuarios http://localhost:3000/users
 router.get('/', userController.getUsers);
 
-// Obtenemos todos los usuarios http://localhost:3000/users/teachers
+// Obtenemos todos los Profesores http://localhost:3000/users/teachers
 router.get('/teachers', userController.getTeachers);
+
+// Obtenemos todos los Profesores filtrados para admin http://localhost:3000/users/teachersAdmin
+router.get('/teachersAdmin', userController.getAdminTeachers);
 
 //Login
 // Obtenemos el usuario http://localhost:3000/users/login
@@ -48,7 +51,7 @@ router.get('/delete/:user_id', userController.deleteUser);
 
 //UPDATE PROFILE
 //http://localhost:3000/users/profile
-router.post('/profile/:user_id',upload.single('avatar'), userController.updateFile);
+router.post('/profile/:user_id', upload.single('avatar'), userController.updateFile);
 
 //SEARCH USER
 //http://localhost:3000/users/search

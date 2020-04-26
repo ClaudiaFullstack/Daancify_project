@@ -1,8 +1,8 @@
-<mat-card>
-    <mat-card-title class="texto">ADMINISTRACION DE PROFESORES</mat-card-title>
-</mat-card>
+<h1 class="display-4 p-3">
+    <span>Daancify Administración de Profesorado</span>
+</h1>
 <app-teachers-filter (searchClick)="search($event)" (clearClick)="clear()"></app-teachers-filter>
 <div class="buttons-container">
-    <button mat-raised-button color="accent" (click)="newUser()"> Nuevo Profesor</button>
+    <button mat-raised-button color="accent" (click)="newTeacher()"> Nuevo Profesor</button>
 </div>
 <app-teachers-grid [data]="theUserList" (rowClick)="goToDetail($event)"></app-teachers-grid>

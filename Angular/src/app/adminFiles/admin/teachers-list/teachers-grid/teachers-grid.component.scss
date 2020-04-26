@@ -5,7 +5,6 @@
 table {
     width: 100%;
     th {
-        // font-weight: bold;
         font-size: 1.1rem;
         background: lightgoldenrodyellow;
         color: black;
@@ -18,8 +17,22 @@ table {
 
 .mat-row {
     &:hover {
-        background-color: lightgoldenrodyellow;
+        background: linear-gradient(to left, lightgoldenrodyellow, white);
         transform: scale(1.05) translateY(-2px);
         box-shadow: 1px 15px 35px -10px rgba(0, 0, 0, 0.4);
     }
+}
+
+button {
+    width: 40px;
+    height: 45px;
+    align-content: center;
+    &:hover {
+        background-color: lightgray;
+    }
+}
+
+.refresh {
+    width: 40px;
+    height: 40px;
 }

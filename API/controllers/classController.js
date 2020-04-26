@@ -4,8 +4,47 @@ const controller = {};
 // CREAMOS UNA NUEVA CLASSE
 // CREATE CLASS
 controller.createClass = (req, res) => {
-    let teacher_id = req.params.teacher_id;
+        let teacher_id = req.params.teacher_id;
+        let {
+            modality,
+            price,
+            dance_school_id,
+            location,
+            description,
+            class_name,
+            start_date,
+            end_date,
+            start_hour,
+            end_hour,
+            periodicity,
+            level,
+            dance_style_id
+        } = req.body;
+        let sqlClass = "INSERT INTO `class` set?";
+        let sqlTimeTable = "INSERT INTO time_table set?"
+        let sqlDanceStyleClass = "INSERT INTO dance_style_class set?"
+        console.log(req.body)
+
+        connection.query(sqlClass, { modality, teacher_id, price, location, description, dance_school_id, class_name },
+            (error, resultsClass) => {
+                let class_id = resultsClass.insertId;
+
+                connection.query(sqlTimeTable, { class_id, start_date, end_date, start_hour, end_hour, periodicity },
+                    (error, resultsTime) => {
+
+                        connection.query(sqlDanceStyleClass, { dance_style_id, class_id, level },
+                            (error, resultsTimeDance) => {
+
+                                res.send({ resultsTimeDance, resultsTime, resultsClass, })
+                            });
+                    });
+            });
+    }
+    // Crear clase por Administrador
+controller.createClassAdmin = (req, res) => {
+
     let {
+        teacher_id,
         modality,
         price,
         dance_school_id,
@@ -31,13 +70,11 @@ controller.createClass = (req, res) => {
 
             connection.query(sqlTimeTable, { class_id, start_date, end_date, start_hour, end_hour, periodicity },
                 (error, resultsTime) => {
-                    console.log(dance_style_id)
-                    console.log(class_id)
-                    console.log(level)
+
                     connection.query(sqlDanceStyleClass, { dance_style_id, class_id, level },
-                        (error, resultsTime) => {
-                            console.log(resultsTime)
-                            res.send(resultsTime)
+                        (error, resultsTimeDance) => {
+
+                            res.send({ resultsTimeDance, resultsTime, resultsClass, })
                         });
                 });
         });
@@ -57,8 +94,8 @@ controller.getAllClass = (req, res) => {
 }
 
 //Ver todas las clases de una fecha para adelante
-controller.getClassByDate = (req,res)=>{
-    let sql = `SELECT * FROM class,dance_style_class,dance_style,time_table,user
+controller.getClassByDate = (req, res) => {
+        let sql = `SELECT * FROM class,dance_style_class,dance_style,time_table,user
     WHERE class.class_id = time_table.class_id 
     AND class.class_id = dance_style_class.class_id 
     AND dance_style.dance_style_id = dance_style_class.dance_style_id 
@@ -66,23 +103,23 @@ controller.getClassByDate = (req,res)=>{
     AND class.logical_erase = 0 
     AND start_date > NOW() 
     ORDER BY start_date ASC`
-    connection.query(sql,(err,classes)=>{
-  
-      res.send(classes);
-    } )
-}
-//Apuntarte a la clase
-controller.getClassRegister = (req,res)=>{
-    let {class_id , user_id} = req.body;
-    let resgitration_date = new Date();
-    let sql = `INSERT INTO class_user set?`
-    connection.query(sql,{class_id , user_id,resgitration_date},(err,classes)=>{
-  
-      res.send("ok");
-    } )
-}
-//Ver las clases en la que esta apuntado un alumno
-controller.getClassSignUp = (req,res)=>{
+        connection.query(sql, (err, classes) => {
+
+            res.send(classes);
+        })
+    }
+    //Apuntarte a la clase
+controller.getClassRegister = (req, res) => {
+        let { class_id, user_id } = req.body;
+        let resgitration_date = new Date();
+        let sql = `INSERT INTO class_user set?`
+        connection.query(sql, { class_id, user_id, resgitration_date }, (err, classes) => {
+
+            res.send("ok");
+        })
+    }
+    //Ver las clases en la que esta apuntado un alumno
+controller.getClassSignUp = (req, res) => {
     let user_id = req.params.user_id;
     let sql = `select * from class_user,class,time_table,dance_style_class,dance_style 
     WHERE class_user.class_id = class.class_id 
@@ -93,32 +130,32 @@ controller.getClassSignUp = (req,res)=>{
     AND class.logical_erase = 0 
     AND start_date >= NOW() 
     ORDER BY start_date ASC`
-    connection.query(sql,(err,classes)=>{
-  
-      res.send(classes);
-    } )
+    connection.query(sql, (err, classes) => {
+
+        res.send(classes);
+    })
 }
 
 //Quitarme de una clase
-controller.deleteClassSignUp = (req,res) =>{
-    let {user_id,class_id} = req.body;
+controller.deleteClassSignUp = (req, res) => {
+    let { user_id, class_id } = req.body;
     let sql = `DELETE FROM class_user 
     WHERE user_id = ${user_id}
     AND class_id = ${class_id}`
-    connection.query(sql,(err,deleteSignUp)=>{
+    connection.query(sql, (err, deleteSignUp) => {
         res.send(deleteSignUp)
     })
 }
 
-controller.seeRegister = (req,res)=>{
-    let {user_id,class_id} = req.body;
+controller.seeRegister = (req, res) => {
+    let { user_id, class_id } = req.body;
     let sql = `SELECT * FROM class_user 
     WHERE user_id = ${user_id}
     AND class_id = ${class_id}`
-    connection.query(sql,{user_id,class_id},(err,classes)=>{
-  
-      res.send(classes);
-    } )
+    connection.query(sql, { user_id, class_id }, (err, classes) => {
+
+        res.send(classes);
+    })
 }
 
 //EDITAMOS CLASSE
@@ -163,14 +200,14 @@ controller.updateClass = (req, res) => {
 
     connection.query(sqlClass, { modality, price, location, description, dance_school_id, class_name },
         (error, resultsClass) => {
-            
+
             connection.query(sqlTimeTable, { start_date, end_date, start_hour, end_hour, periodicity },
                 (error, resultsTime) => {
-              
 
-                    connection.query(sqlDanceStyleClass, { dance_style_id,level },
+
+                    connection.query(sqlDanceStyleClass, { dance_style_id, level },
                         (error, resultsDance) => {
-                        
+
                         });
                 });
         });
@@ -251,8 +288,8 @@ controller.getClassTeacherTime = (req, res) => {
 
 // Ver todas las clases proximas por filtro
 controller.getClassFilter = (req, res) => {
- 
-    let {dance_style_id,class_name,location,start_date,level} = req.body;
+
+    let { dance_style_id, class_name, location, start_date, level } = req.body;
     let sqlAll = `SELECT * FROM class,dance_style_class,dance_style,time_table,user 
     WHERE class.class_id = time_table.class_id 
     AND class.class_id = dance_style_class.class_id 
@@ -260,49 +297,49 @@ controller.getClassFilter = (req, res) => {
     AND class.teacher_id = user.user_id 
     AND class.logical_erase = 0 
     `;
-    let sqlFinal ="";
+    let sqlFinal = "";
     console.log(req.body)
 
-    if(dance_style_id != "" && dance_style_id != null){
-        if(sqlFinal == ""){
+    if (dance_style_id != "") {
+        if (sqlFinal == "") {
             sqlFinal = ` AND dance_style_class.dance_style_id = ${dance_style_id}`;
-        }else{
-            sqlFinal = sqlFinal +  `AND dance_style_class.dance_style_id = ${dance_style_id}`;
+        } else {
+            sqlFinal = sqlFinal + `AND dance_style_class.dance_style_id = ${dance_style_id}`;
         }
-        
+
     }
-    if(class_name != "" && class_name != null){
-        if(sqlFinal == ""){
-            sqlFinal = sqlFinal +` AND class.class_name = "${class_name}"`;
-        }else{
-            sqlFinal =`AND class.class_name = "${class_name}"`;
+    if (class_name != "") {
+        if (sqlFinal == "") {
+            sqlFinal = sqlFinal + ` AND class.class_name = "${class_name}"`;
+        } else {
+            sqlFinal = `AND class.class_name = "${class_name}"`;
         }
     }
-    if(location != "" && location != null){
-        if(sqlFinal == ""){
-        sqlFinal = ` AND class.location = "${location}"`;
-    }else{
-        sqlFinal =sqlFinal + ` AND class.location = "${location}"`;
+    if (location != "") {
+        if (sqlFinal == "") {
+            sqlFinal = ` AND class.location = "${location}"`;
+        } else {
+            sqlFinal = sqlFinal + ` AND class.location = "${location}"`;
+        }
     }
+    if (start_date != "") {
+        if (sqlFinal == "") {
+            sqlFinal = ` AND time_table.start_date = "${start_date}"`;
+        } else {
+            sqlFinal = sqlFinal + ` AND time_table.start_date = "${start_date}"`;
+        }
     }
-    if(start_date != "" && start_date != null){
-        if(sqlFinal == ""){
-        sqlFinal = ` AND time_table.start_date = "${start_date}"`;
-    }else{
-        sqlFinal = sqlFinal + ` AND time_table.start_date = "${start_date}"`;
+    if (level != "") {
+        if (sqlFinal == "") {
+            sqlFinal = ` AND dance_style_class.level = ${level}`;
+        } else {
+            sqlFinal = sqlFinal + ` AND dance_style_class.level = ${level}`;
+        }
     }
-    }
-    if(level != "" && level != null){
-        if(sqlFinal == ""){
-        sqlFinal = ` AND dance_style_class.level = ${level}`;
-    }else{
-        sqlFinal = sqlFinal + ` AND dance_style_class.level = ${level}`;
-    }
-    }
-    sqlFinal= sqlFinal + " AND start_date > NOW() ORDER BY start_date ASC"
+    sqlFinal = sqlFinal + " AND start_date > NOW() ORDER BY start_date ASC"
     sqlAll = sqlAll + sqlFinal;
 
-    connection.query(sqlAll ,
+    connection.query(sqlAll,
         (err, results) => {
             console.log(sqlFinal)
             res.send(results);

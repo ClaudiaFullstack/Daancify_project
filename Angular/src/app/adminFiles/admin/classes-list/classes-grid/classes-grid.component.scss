@@ -7,7 +7,7 @@ table {
     th {
         // font-weight: bold;
         font-size: 1.1rem;
-        background: lightsalmon;
+        background: lightgray;
         color: black;
         .mat-sort-header-arrow {
             font-size: 1.1rem !important;
@@ -18,8 +18,40 @@ table {
 
 .mat-row {
     &:hover {
-        background-color: lightsalmon;
+        background: linear-gradient(to left, lightgray, white);
         transform: scale(1.05) translateY(-2px);
         box-shadow: 1px 15px 35px -10px rgba(0, 0, 0, 0.4);
+    }
+}
+
+button {
+    width: 40px;
+    height: 45px;
+    align-content: center;
+    &:hover {
+        background-color: lightgray;
+    }
+}
+
+.refresh {
+    width: 40px;
+    height: 40px;
+}
+
+@media only screen and (max-width:375px) {
+    .mobile-navbar {
+        display: unset;
+        visibility: visible;
+    }
+    .desktop-navbar {
+        display: none;
+        visibility: hidden;
+    }
+    .card {
+        height: 530px;
+        margin-top: 60px;
+    }
+    .container {
+        height: 75vh;
     }
 }

@@ -8,6 +8,14 @@ var classController = require('../controllers/classController')
 // Creamos una classe   http://localhost:3000/class/create/:teacher_id <-  quien creo la clase
 router.post('/create/:teacher_id', classController.createClass);
 
+// CREATE CLASS ADMIN (Admin selecciona Teacher)
+// Creamos una classe   http://localhost:3000/class/createAdmin 
+router.post('/createAdmin', classController.createClassAdmin);
+
+// SEE teacher Admin (Trae Teacher con id y nombre )
+// obtenemos todas las clases   http://localhost:3000/teacherAdmin
+router.get('/', classController.getAllClass);
+
 // SEE ALL  CLASS
 // obtenemos todas las clases   http://localhost:3000/class
 router.get('/', classController.getAllClass);
@@ -25,7 +33,6 @@ router.get('/delete/:class_id', classController.deleteClass)
 // EDIT CLASS
 // Editamos una classe http://localhost:3000/class/edit/:ID
 router.get('/edit/:class_id', classController.editClass);
-
 
 //UPDATE CLASS
 // Añadimos una clase http://localhost:3000/class/update/:ID
@@ -48,23 +55,23 @@ router.get('/teacherClass/:teacher_id', classController.getClassTeacherTime)
 
 //Ver las clases en la que esta apuntado un alumno
 //http://localhost:3000/class/register
-router.post('/register',classController.getClassRegister)
+router.post('/register', classController.getClassRegister)
 
 
 //Ver las clases en la que esta apuntado un alumno
 //http://localhost:3000/class/signUp/:id
-router.get('/signUp/:user_id',classController.getClassSignUp)
+router.get('/signUp/:user_id', classController.getClassSignUp)
 
 //Ver si esta apuntado un alumno a una clase
 //http://localhost:3000/class/seeRegister
-router.post('/seeRegister',classController.seeRegister)
+router.post('/seeRegister', classController.seeRegister)
 
 //Quitarte si esta apuntado un alumno a una clase
 //http://localhost:3000/class/deleteSignUp
-router.post('/deleteSignUp',classController.deleteClassSignUp)
+router.post('/deleteSignUp', classController.deleteClassSignUp)
 
 // Ver todas las clases proximas por filtro
 //http://localhost:3000/class/classFilter
-router.post('/classFilter',classController.getClassFilter)
+router.post('/classFilter', classController.getClassFilter)
 
 module.exports = router;

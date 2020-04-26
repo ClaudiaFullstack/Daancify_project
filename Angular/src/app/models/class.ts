@@ -14,10 +14,6 @@ export class Class {
     level: number;
     dance_style_id: number;
 
-
-
-
-
     constructor(item?: any) {
         this.class_id = item?.class_id ? item.class_id : '';
         this.dance_school_id = item?.dance_school_id ? item.dance_school_id : '';

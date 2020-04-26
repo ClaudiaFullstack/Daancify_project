@@ -4,11 +4,12 @@ import { NgModule } from '@angular/core';
 // componentes
 import { ClassesListComponent } from './classes-list.component';
 import { ClassesDetailModalComponent } from './classes-detail-modal/classes-detail-modal.component';
+import { ClassesCreateModalComponent } from './classes-create-modal/classes-create-modal.component';
 
 
 const routes: Routes = [
   { path: '', component: ClassesListComponent },
-  { path: 'new', component: ClassesDetailModalComponent },
+  { path: 'new', component: ClassesCreateModalComponent },
   { path: ':id', component: ClassesDetailModalComponent }
 ];
 

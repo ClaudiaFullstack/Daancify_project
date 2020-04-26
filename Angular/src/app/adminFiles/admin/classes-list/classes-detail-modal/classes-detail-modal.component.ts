@@ -67,11 +67,11 @@ export class ClassesDetailModalComponent implements OnInit {
 
     this.classForm = fb.group({
       class_id: [''],
-      dance_school_id: [''],
-      teacher_id: [''],
-      class_name: ['', Validators.maxLength(50)],
-      location: ['', Validators.maxLength(50)],
-      description: ['', Validators.maxLength(100)],
+      dance_school_id: ['', Validators.required],
+      teacher_id: ['', Validators.required],
+      class_name: ['', Validators.required],
+      location: ['', Validators.required],
+      description: ['', Validators.required],
       modality: ['', Validators.required],
       price: ['', Validators.required],
       start_date: ['', Validators.required],
@@ -114,10 +114,39 @@ export class ClassesDetailModalComponent implements OnInit {
       console.log(x);
 
     });
-    this.dialogRef.close();
     this.alert();
+    this.dialogRef.close();
     this.refresh();
+  }
 
+  deleteClick(class_id) {
+    Swal.fire({
+      title: 'Estás Seguro?',
+      text: 'Puede liarse una buena!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'SI, Borralo!',
+    }).then((result) => {
+      if (result.value) {
+        this.classModel.deleteClass(class_id).subscribe((data) => {
+          console.log('borrado');
+          Swal.fire('Borrado!', 'La clase ha sido Borrada.', 'success');
+          this.alert();
+          this.dialogRef.close();
+        });
+      } else {
+        Swal.fire({
+          title: '!Cancelado¡',
+          icon: 'success',
+          confirmButtonText: 'Cerrar',
+          timer: 2500,
+        });
+        this.dialogRef.close();
+      }
+      this.refresh();
+    });
   }
 
   cancelClick() {
@@ -142,6 +171,16 @@ export class ClassesDetailModalComponent implements OnInit {
   }
   getError(el) {
     switch (el) {
+      case 'dance_school_id':
+        if (this.classForm.get('dance_school_id').hasError('required')) {
+          return 'Nombre de Escuela requerida';
+        }
+        break;
+      case 'teacher_id':
+        if (this.classForm.get('teacher_id').hasError('required')) {
+          return 'Nombre de Profesor requerido';
+        }
+        break;
       case 'class_name':
         if (this.classForm.get('class_name').hasError('required')) {
           return 'Nombre de clase requerida';
@@ -157,6 +196,17 @@ export class ClassesDetailModalComponent implements OnInit {
           return 'Descripción requerida';
         }
         break;
+      case 'modality':
+        if (this.classForm.get('modality').hasError('required')) {
+          return 'Modalidad requerida';
+        }
+        break;
+      case 'price':
+        if (this.classForm.get('price').hasError('required')) {
+          return 'price requerido';
+        }
+        break;
+
       case 'start_date':
         if (this.classForm.get('start_date').hasError('required')) {
           return 'Fechas de inicio requerida';
@@ -187,8 +237,8 @@ export class ClassesDetailModalComponent implements OnInit {
           return 'Nivel requerido';
         }
         break;
-      case 'periodicity':
-        if (this.classForm.get('periodicity').hasError('required')) {
+      case 'dance_style_id':
+        if (this.classForm.get('dance_style_id').hasError('required')) {
           return 'Estilo requerido';
         }
         break;

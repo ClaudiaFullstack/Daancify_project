@@ -1,4 +1,11 @@
-import { Component, OnInit, Inject, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Inject,
+  SimpleChanges,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { Class } from '../../../../models/class';
 import { DanceStyle } from 'src/app/models/danceStyle';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -39,7 +46,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./classes-create-modal.component.scss'],
 })
 export class ClassesCreateModalComponent implements OnInit {
-
   matcher = new MyErrorStateMatcher();
   class: Class[];
   dance_styles: DanceStyle;
@@ -59,16 +65,15 @@ export class ClassesCreateModalComponent implements OnInit {
     private snackBar: MatSnackBar,
     private classService: ClassService,
     private schoolDanceService: SchoolDanceService,
-    private userService: UserService,
+    private userService: UserService
   ) {
-
     this.classForm = fb.group({
       class_id: [''],
-      dance_school_id: [''],
-      teacher_id: [''],
-      class_name: ['', Validators.maxLength(50)],
-      location: ['', Validators.maxLength(50)],
-      description: ['', Validators.maxLength(100)],
+      dance_school_id: ['', Validators.required],
+      teacher_id: ['', Validators.required],
+      class_name: ['', Validators.required],
+      location: ['', Validators.required],
+      description: ['', Validators.required],
       modality: ['', Validators.required],
       price: ['', Validators.required],
       start_date: ['', Validators.required],
@@ -101,21 +106,19 @@ export class ClassesCreateModalComponent implements OnInit {
         this.classForm.patchValue(this.class);
       }
     });
-}
+  }
 
   saveClick() {
     // console.log(this.classForm);
     // if (this.classForm.valid) {
-      const newClass = new Class(this.classForm.value);
-      this.classModel.createClassAdmin(newClass).subscribe((x) => {
-        if (x) {
-          this.snackBar.open('User save successfully', 'Ok', {
-            duration: 2500,
-          });
-        }
-        this.dialogRef.close(x);
-      });
-    }
+    const newClass = new Class(this.classForm.value);
+    this.classModel.createClassAdmin(newClass).subscribe((x) => {
+
+    });
+    this.alert();
+    this.dialogRef.close();
+    this.refresh();
+  }
 
   cancelClick() {
     this.snackBar.open('cancelado', 'Ok', { duration: 1000 });
@@ -128,7 +131,7 @@ export class ClassesCreateModalComponent implements OnInit {
   }
   private alert() {
     Swal.fire({
-      title: '!Clase actualizada¡',
+      title: '!Clase Creada¡',
       icon: 'success',
       confirmButtonText: 'Cerrar',
       timer: 1500,
@@ -139,6 +142,16 @@ export class ClassesCreateModalComponent implements OnInit {
   }
   getError(el) {
     switch (el) {
+      case 'dance_school_id':
+        if (this.classForm.get('dance_school_id').hasError('required')) {
+          return 'Nombre de Escuela requerida';
+        }
+        break;
+      case 'teacher_id':
+        if (this.classForm.get('teacher_id').hasError('required')) {
+          return 'Nombre de Profesor requerido';
+        }
+        break;
       case 'class_name':
         if (this.classForm.get('class_name').hasError('required')) {
           return 'Nombre de clase requerida';
@@ -154,6 +167,17 @@ export class ClassesCreateModalComponent implements OnInit {
           return 'Descripción requerida';
         }
         break;
+      case 'modality':
+        if (this.classForm.get('modality').hasError('required')) {
+          return 'Modalidad requerida';
+        }
+        break;
+      case 'price':
+        if (this.classForm.get('price').hasError('required')) {
+          return 'Precio requerido';
+        }
+        break;
+
       case 'start_date':
         if (this.classForm.get('start_date').hasError('required')) {
           return 'Fechas de inicio requerida';
@@ -184,8 +208,8 @@ export class ClassesCreateModalComponent implements OnInit {
           return 'Nivel requerido';
         }
         break;
-      case 'periodicity':
-        if (this.classForm.get('periodicity').hasError('required')) {
+      case 'dance_style_id':
+        if (this.classForm.get('dance_style_id').hasError('required')) {
           return 'Estilo requerido';
         }
         break;

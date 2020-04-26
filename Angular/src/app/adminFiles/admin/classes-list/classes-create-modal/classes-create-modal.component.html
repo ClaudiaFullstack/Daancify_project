@@ -7,85 +7,122 @@
         </mat-form-field>
         <!-- Escuela -->
         <mat-form-field>
-            <mat-label>Tienes Escuela</mat-label>
+            <mat-label>Escuela</mat-label>
             <mat-select ng-disabled="text" formControlName="dance_school_id">
                 <mat-option *ngFor="let danceSchool of danceSchools" [value]="danceSchool.dance_school_id">
                     {{"ID: " + '' + danceSchool.dance_school_id + ' / ' + " Escuela: " + ' ' + danceSchool.dance_school_name + ' / ' + " Creador: " + ' ' + danceSchool.user_name}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="classForm.controls['dance_school_id'].invalid">
+                {{getError('dance_school_id')}}
+            </mat-error>
         </mat-form-field>
         <!-- Profesor -->
         <mat-form-field>
             <mat-label>Profesor</mat-label>
             <mat-select formControlName="teacher_id">
                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.user_id">
-                    {{"Id: " + '' + teacher.user_id + ' -- ' + " Nombre: " + ' ' + teacher.user_name + ' ' + teacher.last_name}}
+                    {{"ID: " + '' + teacher.user_id + ' / ' + " Nombre: " + ' / ' + teacher.user_name + ' ' + teacher.last_name}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="classForm.controls['teacher_id'].invalid">
+                {{getError('teacher_id')}}
+            </mat-error>
         </mat-form-field>
         <!-- Nombre -->
         <mat-form-field>
             <mat-label>Nombre de la Clase</mat-label>
             <input matInput placeHolder="Nombre Clase" type="text" formControlName="class_name">
+            <mat-error *ngIf="classForm.controls['class_name'].invalid">
+                {{getError('class_name')}}
+            </mat-error>
         </mat-form-field>
         <!-- Ubicación -->
         <mat-form-field>
             <mat-label>Ubicación</mat-label>
             <input matInput placeHolder="Ubicación" type="text" formControlName="location">
+            <mat-error *ngIf="classForm.controls['location'].invalid">
+                {{getError('location')}}
+            </mat-error>
         </mat-form-field>
         <!-- Descripción -->
         <mat-form-field>
             <mat-label>Descripción</mat-label>
-            <input matInput placeHolder="description" type="text" formControlName="description">
+            <input matInput placeHolder="Descripción" type="text" formControlName="description">
+            <mat-error *ngIf="classForm.controls['description'].invalid">
+                {{getError('description')}}
+            </mat-error>
         </mat-form-field>
-
         <!-- Modalidad -->
         <mat-form-field>
             <mat-label>Modalidad</mat-label>
-            <mat-select placeholder="Modalidad" formControlName="modality">
-                <mat-option></mat-option>
-                <mat-option [value]="0">Directo</mat-option>
-                <mat-option [value]="1">Online</mat-option>
+            <mat-select placeholder="Nivel de la clase" formControlName="modality">
+                <mat-option [value]="'1'">1 - Directo</mat-option>
+                <mat-option [value]="'2'">2 - Online</mat-option>
             </mat-select>
+            <mat-error *ngIf="classForm.controls['modality'].invalid">
+                {{getError('modality')}}
+            </mat-error>
         </mat-form-field>
-
         <!-- Precio -->
         <mat-form-field class="cuadrado">
             <mat-label>Precio</mat-label>
             <input matInput placeholder="30" type="number" formControlName="price">
+            <span matSuffix>€</span>
+            <mat-error *ngIf="classForm.controls['price'].invalid">
+                {{getError('price')}}
+            </mat-error>
         </mat-form-field>
         <!-- Fechas y hora -->
         <mat-form-field class="cuadrado">
             <input matInput type="date" placeholder="Fecha Inicio" formControlName="start_date">
+            <mat-error *ngIf="classForm.controls['start_date'].invalid">
+                {{getError('start_date')}}
+            </mat-error>
         </mat-form-field>
+
         <mat-form-field class="cuadrado">
             <input matInput type="date" placeholder="Fecha Fin" formControlName="end_date">
+            <mat-error *ngIf="classForm.controls['end_date'].invalid">
+                {{getError('end_date')}}
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="cuadrado">
             <input matInput type="time" placeholder="Hora Inicio" formControlName="start_hour">
+            <mat-error *ngIf="classForm.controls['start_hour'].invalid">
+                {{getError('start_hour')}}
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="cuadrado">
             <input matInput type="time" placeholder="Hora Fin" formControlName="end_hour">
+            <mat-error *ngIf="classForm.controls['end_hour'].invalid">
+                {{getError('end_hour')}}
+            </mat-error>
         </mat-form-field>
+        <!-- Periodicidad -->
         <mat-form-field>
-            <!-- Periodicidad -->
             <mat-label>Periodicidad</mat-label>
-            <mat-select placeholder="Nivel de la clase" formControlName="level">
-                <mat-option></mat-option>
+            <mat-select placeholder="Nivel de la clase" formControlName="periodicity">
                 <mat-option [value]="'puntual'">Puntual</mat-option>
                 <mat-option [value]="'mes'">Mes</mat-option>
                 <mat-option [value]="'anual'">Anual</mat-option>
             </mat-select>
+            <mat-error *ngIf="classForm.controls['periodicity'].invalid">
+                {{getError('periodicity')}}
+            </mat-error>
         </mat-form-field>
         <!-- Nivel -->
         <mat-form-field>
             <mat-label>Nivel</mat-label>
             <mat-select placeholder="Nivel de la clase" formControlName="level">
-                <mat-option [value]="'1'">Inicial</mat-option>
-                <mat-option [value]="'2'">Intermedio</mat-option>
-                <mat-option [value]="'3'">Avanzado</mat-option>
-                <mat-option [value]="'4'">Perfeccionamiento</mat-option>
+                <mat-option [value]="'1'">1 - Inicial</mat-option>
+                <mat-option [value]="'2'">2 - Intermedio</mat-option>
+                <mat-option [value]="'3'">3 - Avanzado</mat-option>
+                <mat-option [value]="'4'">4 - Perfeccionamiento</mat-option>
             </mat-select>
+            <mat-error *ngIf="classForm.controls['level'].invalid">
+                {{getError('level')}}
+            </mat-error>
         </mat-form-field>
         <!-- Estilo -->
         <mat-form-field>
@@ -95,11 +132,14 @@
                     {{dance_style.dance_style_name}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="classForm.controls['dance_style_id'].invalid">
+                {{getError('dance_style_id')}}
+            </mat-error>
         </mat-form-field>
     </form>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="cancelClick()">Cancel</button>
     <button mat-button (click)="cleanForm()">limpiar</button>
-    <button mat-raised-button class="submit-button" (click)="saveClick()">Crear</button>
+    <button mat-raised-button class="submit-button" (click)="saveClick()" [disabled]="!classForm.valid">Crear</button>
 </div>

@@ -77,6 +77,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTooltipModule,
     MatGridListModule,
     MatExpansionModule,
+    MatCheckboxModule
 
 
   ],

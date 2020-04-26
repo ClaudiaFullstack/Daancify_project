@@ -44,7 +44,7 @@ export class ClassesListComponent implements OnInit {
   newClass() {
     const dialogRef = this.dialog.open(ClassesCreateModalComponent, {
       width: '1050px',
-      height: '500px',
+      height: '700px',
       data: new Class(),
     });
 

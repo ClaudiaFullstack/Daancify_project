@@ -1,3 +1,5 @@
+import { NumberValueAccessor } from '@angular/forms';
+
 export class Class {
     class_id: number;
     dance_school_id: number;
@@ -13,6 +15,7 @@ export class Class {
     periodicity: string;
     level: number;
     dance_style_id: number;
+    teacher_id: number;
 
     constructor(item?: any) {
         this.class_id = item?.class_id ? item.class_id : '';
@@ -29,5 +32,6 @@ export class Class {
         this.periodicity = item?.periodicity ? item.periodicity : '';
         this.level = item?.level ? item.level : '';
         this.dance_style_id = item?.dance_style_id ? item.dance_style_id : '';
+        this.teacher_id = item?.teacher_id ? item.teacher_id : '';
     }
 }

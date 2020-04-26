@@ -23,7 +23,8 @@ export class StudentClass {
     password: string;
     avatar: string;
     user_type: number;
-    
+    teacher_id: number;
+
 
 
 
@@ -53,5 +54,6 @@ export class StudentClass {
         this.password = item?.password ? item.password : '';
         this.avatar = item?.avatar ? item.avatar : '';
         this.user_type = item?.user_type ? item.user_type : '';
+        this.teacher_id = item?.teacher_id ? item.teacher_id : '';
     }
 }

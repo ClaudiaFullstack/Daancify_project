@@ -10,10 +10,10 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./classes-grid.component.scss']
 })
 export class ClassesGridComponent implements OnInit {
-  displayedColumns = ['class_id', 'dance_school_id', 'class_name',
-     'location', 'description', 'modality', 'price',
-        'start_date', 'end_date', 'start_hour', 'end_hour',
-            'periodicity', 'level', 'dance_style_id'];
+  displayedColumns = ['class_id', 'class_name',
+  'location', 'description', 'modality', 'price',
+     'start_date', 'end_date', 'start_hour', 'end_hour',
+         'periodicity', 'level', 'dance_style_id'];
             theClassesListDataSource: MatTableDataSource<Class> = new MatTableDataSource<Class>();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -35,5 +35,8 @@ export class ClassesGridComponent implements OnInit {
   rowClicked(item: Class) {
     this.rowClick.emit(item);
   }
+  refresh(): void {
+    window.location.reload();
+}
 
 }

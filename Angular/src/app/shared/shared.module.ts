@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatTooltipModule,
     MatGridListModule,
     MatExpansionModule,
+    MatCheckboxModule,
   ],
   exports: [
     FormsModule,
@@ -75,6 +77,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatTooltipModule,
     MatGridListModule,
     MatExpansionModule,
+
 
   ],
 })

@@ -4,11 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 // componentes
 import { UserDetailModalComponent } from './user-detail-modal/user-detail-modal.component';
 import { UsersListComponent } from './user-list.component';
+import { UserCreateModalComponent } from './user-create-modal/user-create-modal.component';
 
 
 const routes: Routes = [
   { path: '', component: UsersListComponent },
-  { path: 'new', component: UserDetailModalComponent },
+  { path: 'new', component: UserCreateModalComponent },
   { path: ':id', component: UserDetailModalComponent }
 ];
 

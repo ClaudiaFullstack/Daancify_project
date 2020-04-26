@@ -1,6 +1,5 @@
 <!-- Botón desplegable -->
-<mat-expansion-panel [expanded]="panelOpenState" (opened)="beforePanelOpened(panelOpenState)"
-    (closed)="beforePanelClosed(panelOpenState)">
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="beforePanelOpened(panelOpenState)" (closed)="beforePanelClosed(panelOpenState)">
     <mat-expansion-panel-header>
         <mat-panel-title>
             Crear una nueva clase
@@ -12,17 +11,18 @@
         <div class="login-box">
             <div class="row container-form">
                 <div class=" col-12 registration-right">
-                    <mat-form-field>
+                    <mat-form-field clamat-form-field>
                         <mat-label>Nombre de la clase</mat-label>
                         <input matInput placeholder="Málaga" type="text" formControlName="class_name">
                     </mat-form-field>
-                    <br>
-                    <mat-label class="example-margin">*Marcar si no tiene escuela</mat-label>
-                    <br>
-                    <mat-radio-group>
-                        <mat-radio-button class="example-margin" value='false' (click)="SchoolDance()">No
-                        </mat-radio-button>
-                    </mat-radio-group>
+                    <mat-form-field>
+                        <mat-label class="example-margin">*Marcar si no tiene escuela</mat-label>
+
+                        <mat-radio-group>
+                            <mat-radio-button class="example-margin" value='false' (click)="SchoolDance()">No
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </mat-form-field>
 
                     <mat-radio-group formControlName="modality" class="space">
                         <mat-radio-button value="0">Directo</mat-radio-button>
@@ -43,8 +43,7 @@
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Descripción</mat-label>
-                        <input matInput #message maxlength="256"
-                            placeholder="Clase de flamenco para practicar en parejas" formControlName="description">
+                        <input matInput #message maxlength="256" placeholder="Clase de flamenco para practicar en parejas" formControlName="description">
                         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
@@ -86,10 +85,9 @@
                     </mat-form-field>
 
                     <br>
-                    <button mat-raised-button class="submit-button" (click)="createClass()"
-                        [disabled]="!classForm.valid">Crear
+                    <button mat-raised-button class="submit-button" (click)="createClass()" [disabled]="!classForm.valid">Crear
                         Clase</button>
-                    <button mat-raised-button class="submit-button margin-buttom" (click)="classForm.reset()">Limpiar</button>
+                    <button mat-rss="submit-button margin-buttom" (click)="classForm.reset()">Limpiar</button>
                 </div>
             </div>
         </div>
@@ -138,8 +136,7 @@
                     </div>
                     <br>
                     <p> <u>HORARIO </u> </p>
-                    <p> <span class="title-text">FECHA: </span> {{card.start_date | date:"mediumDate"}} -
-                        {{card.end_date | date:"mediumDate"}} </p>
+                    <p> <span class="title-text">FECHA: </span> {{card.start_date | date:"mediumDate"}} - {{card.end_date | date:"mediumDate"}} </p>
                     <p><span class="title-text">DURACION:</span> {{card.start_hour}} - {{card.end_hour}}</p>
                     <p *ngIf="card?.level === 0"><span class="title-text">NIVEL:</span> Inicial</p>
                     <p *ngIf="card?.level === 1"><span class="title-text">NIVEL:</span> Intermedio</p>
@@ -149,11 +146,9 @@
                     <p *ngIf="card?.modality === 1"><span class="title-text">MODALIDAD:</span> Streaming</p>
                     <p><span class="title-text">PRECIO: </span> {{card?.price}} € </p>
                     <div class="details">
-                        <div class="edit"><a class="btn btn-primary btn-block hidden-xs"
-                                (click)="editClass(card)">Editar</a>
+                        <div class="edit"><a class="btn btn-primary btn-block hidden-xs" (click)="editClass(card)">Editar</a>
                         </div>
-                        <div class="borrar"><a class="btn btn-primary btn-block hidden-xs"
-                                (click)="deleteClass(card.class_id)">Borrar</a>
+                        <div class="borrar"><a class="btn btn-primary btn-block hidden-xs" (click)="deleteClass(card.class_id)">Borrar</a>
                         </div>
                     </div>
                     <br />
@@ -162,7 +157,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 <!-- Fin - Contenido del la lista de clases que ha creado un profesor -->

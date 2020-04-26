@@ -1,6 +1,7 @@
-<mat-card>
-    <mat-card-title class="texto">ADMINISTRACION DE USUARIOS</mat-card-title>
-</mat-card>
+<h1 class="display-4 p-3">
+    <span>Daancify Administración de Usuarios</span>
+</h1>
+
 <app-users-filter (searchClick)="search($event)" (clearClick)="clear()"></app-users-filter>
 <div class="buttons-container">
     <button mat-raised-button color="accent" (click)="newUser()"> Nuevo Usuario</button>

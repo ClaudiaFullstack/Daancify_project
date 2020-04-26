@@ -1,22 +1,22 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
-import { map } from "rxjs/operators";
-import { User } from "../../models/user";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { User } from '../../models/user';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   // CREAR UN USUARIO NUEVO
   saveUser(user: User): Observable<User> {
-    const url = "http://localhost:3000/users/saveUser";
+    const url = 'http://localhost:3000/users/saveUser';
     return this.httpClient.post<User>(url, user);
   }
 
   // Obtener usuarios
   getUsers(): Observable<User[]> {
-    const url = "http://localhost:3000/users";
+    const url = 'http://localhost:3000/users';
     return this.httpClient
       .get<User[]>(url)
       .pipe(map((x) => x.map((u) => new User(u))));
@@ -24,7 +24,7 @@ export class UserService {
 
   // Obtener usuario
   getUser(id: string): Observable<User> {
-    const url = "/assets/mocks/user.json";
+    const url = '/assets/mocks/user.json';
     return this.httpClient.get<User>(url).pipe(map((x) => new User(x)));
   }
 
@@ -42,8 +42,7 @@ export class UserService {
 
   // Filtrado de busqueda
   search(filter: User): Observable<User[]> {
-    // con POST -- NO VA
-    const url = "http://localhost:3000/users/search";
+    const url = 'http://localhost:3000/users/search';
     return this.httpClient
       .post<User[]>(url, filter)
       .pipe(map((x) => x.map((u) => new User(u))));
@@ -62,6 +61,13 @@ export class UserService {
     return this.httpClient.get<User[]>(url).pipe(map(x => x.map(u => new User(u))));
 
   }
+
+     // TODOS LOS PROFESORES PARA ADMIN
+     getAdminTeachers(): Observable<User> {
+      const url = 'http://localhost:3000/users/teachersAdmin';
+      return this.httpClient.get<User>(url);
+
+    }
 
   // Profesor info por id
 

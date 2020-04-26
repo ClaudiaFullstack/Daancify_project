@@ -1,7 +1,8 @@
 mat-card {
     padding: 10px;
     margin-top: 10px!important;
-    background-color: lightgrey;
+    background-color: azure;
+    border: 1px solid gray;
     mat-form-field {
         margin-right: 20px;
     }
@@ -22,19 +23,20 @@ mat-card {
 .padding {
     padding-top: 50px;
 }
-.space-buttom{
+
+.space-buttom {
     margin-right: 20px;
-  }
+}
 
-  @media only screen and (max-width:375px){
-    .space-buttom{
+@media only screen and (max-width:375px) {
+    .space-buttom {
         margin-left: 16px;
-      }
-
-      .mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+    }
+    .mat-card>:last-child:not(.mat-card-footer),
+    .mat-card-content>:last-child:not(.mat-card-footer) {
         text-align: center;
     }
     .mat-card-header .mat-card-title {
         margin-left: 38px;
     }
-  }
+}

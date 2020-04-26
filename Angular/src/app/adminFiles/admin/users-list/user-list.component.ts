@@ -4,6 +4,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDetailModalComponent } from './user-detail-modal/user-detail-modal.component';
+import { UserCreateModalComponent } from './user-create-modal/user-create-modal.component';
 
 @Component({
   selector: 'app-user-list',
@@ -26,7 +27,7 @@ export class UsersListComponent implements OnInit {
 
   goToDetail(user: User) {
     const dialogRef = this.dialog.open(UserDetailModalComponent, {
-      width: '750px',
+      width: '850px',
       data: user,
     });
 
@@ -38,18 +39,15 @@ export class UsersListComponent implements OnInit {
   search(user: User) {
     this.userModel.search(user).subscribe((x) => {
       this.theUserList = x;
-      console.log(x)
     });
   }
 
   newUser() {
-    const dialogRef = this.dialog.open(UserDetailModalComponent, {
-      width: '650px',
+    const dialogRef = this.dialog.open(UserCreateModalComponent, {
+      width: '850px',
       data: new User(),
     });
-
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
     });
   }
 
@@ -57,7 +55,7 @@ export class UsersListComponent implements OnInit {
     this.recharge();
   }
 
-  private recharge(){
+  private recharge() {
     this.userModel.getUsers().subscribe((x) => {
       this.theUserList = x;
 

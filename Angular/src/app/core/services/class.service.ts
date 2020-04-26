@@ -17,6 +17,11 @@ export class ClassService {
         const url = `http://localhost:3000/class/create/${teacher_id}`;
         return this.httpClient.post<Class>(url, newClass);
     }
+    createClassAdmin(newclass: Class): Observable<Class> {
+      const url = 'http://localhost:3000/class/createAdmin';
+      return this.httpClient.post<Class>(url, newclass);
+    }
+
     // Todos los estilos de bailes
     getAllDanceStyle(): Observable<DanceStyle> {
         const url = `http://localhost:3000/class/danceStyle`;
@@ -35,19 +40,24 @@ export class ClassService {
         return this.httpClient.get<Class>(url);
     }
 
-    //EDIT CLASS
+    // EDIT CLASS
     updateClass(editClass): Observable<Class> {
         const url = `http://localhost:3000/class/update/${editClass.class_id}`;
         return this.httpClient.post<Class>(url, editClass);
     }
+        // EDIT CLASS
+    updateClassAdmin(editClass): Observable<Class> {
+        const url = `http://localhost:3000/class/updateClassAdmin`;
+        return this.httpClient.post<Class>(url, editClass);
+    }
 
-    //Delete CLASS
+    // Delete CLASS
     deleteClass(class_id): Observable<Class> {
         const url = `http://localhost:3000/class/delete/${class_id}`;
         return this.httpClient.get<Class>(url);
     }
 
-    //SEE ALL CLASS BY DATE
+    // SEE ALL CLASS BY DATE
     getAllClassByDate(): Observable<StudentClass[]> {
         const url = `http://localhost:3000/class/student`;
         return this.httpClient.get<StudentClass[]>(url);
@@ -68,7 +78,7 @@ export class ClassService {
         const url = `http://localhost:3000/class/seeRegister`;
         return this.httpClient.post<SignUp[]>(url, register);
     }
-    //quitarte de la clase apuntado
+    // quitarte de la clase apuntado
     deleteClassSignUp(register): Observable<SignUp[]> {
         const url = `http://localhost:3000/class/deleteSignUp`;
         return this.httpClient.post<SignUp[]>(url, register);

@@ -9,6 +9,7 @@ import { TeachersFilterComponent } from './teachers-filter/teachers-filter.compo
 import { TeacherDetailModalComponent } from './teacher-detail-modal/teacher-detail-modal.component';
 import { TeachersListComponent } from './teachers-list.component';
 import { TeachersListRoutingModule } from './teachers-list.routing';
+import { TeacherCreateModalComponent } from './teacher-create-modal/teacher-create-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TeachersListRoutingModule } from './teachers-list.routing';
     TeachersGridComponent,
     TeachersFilterComponent,
     TeacherDetailModalComponent,
+    TeacherCreateModalComponent
 
 
   ],
@@ -25,6 +27,7 @@ import { TeachersListRoutingModule } from './teachers-list.routing';
     TeachersGridComponent,
     TeachersFilterComponent,
     TeacherDetailModalComponent,
+    TeacherCreateModalComponent
 
   ],
   imports: [

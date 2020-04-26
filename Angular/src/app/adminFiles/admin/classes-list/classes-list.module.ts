@@ -10,13 +10,15 @@ import { ClassesGridComponent } from './classes-grid/classes-grid.component';
 import { ClassesListComponent } from './classes-list.component';
 import { ClassesFilterComponent } from './classes-filter/classes-filter.component';
 import { ClassesDetailModalComponent } from './classes-detail-modal/classes-detail-modal.component';
+import { ClassesCreateModalComponent } from './classes-create-modal/classes-create-modal.component';
 
 @NgModule({
   declarations: [
     ClassesListComponent,
     ClassesGridComponent,
     ClassesFilterComponent,
-    ClassesDetailModalComponent
+    ClassesDetailModalComponent,
+    ClassesCreateModalComponent
 
 
   ],
@@ -25,7 +27,8 @@ import { ClassesDetailModalComponent } from './classes-detail-modal/classes-deta
     ClassesListComponent,
     ClassesGridComponent,
     ClassesFilterComponent,
-    ClassesDetailModalComponent
+    ClassesDetailModalComponent,
+    ClassesCreateModalComponent
 
   ],
   imports: [

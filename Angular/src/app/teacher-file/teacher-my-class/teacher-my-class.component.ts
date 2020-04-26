@@ -18,9 +18,9 @@ import { MyErrorStateMatcher } from 'src/app/core/register/register.component';
   styleUrls: ['./teacher-my-class.component.scss']
 })
 export class TeacherMyClassComponent implements OnInit, OnChanges {
-  @Input() expanded: any
+  @Input() expanded: any;
 
-  @Output() opened: EventEmitter<void>
+  @Output() opened: EventEmitter<void>;
   // Recoger la info del usuario logeado
   user: User;
   matcher = new MyErrorStateMatcher();
@@ -44,7 +44,7 @@ export class TeacherMyClassComponent implements OnInit, OnChanges {
   panelOpenState = false;
 
   constructor(private authService: AuthService, private classService: ClassService,
-    private changeDetectorRef: ChangeDetectorRef, fb: FormBuilder, private schoolDanceService: SchoolDanceService, ) {
+              private changeDetectorRef: ChangeDetectorRef, fb: FormBuilder, private schoolDanceService: SchoolDanceService, ) {
     this.user = authService.getUser().user;
 
     this.recharge();

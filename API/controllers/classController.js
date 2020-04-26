@@ -300,7 +300,7 @@ controller.getClassFilter = (req, res) => {
     let sqlFinal = "";
     console.log(req.body)
 
-    if (dance_style_id != "") {
+    if (dance_style_id != "" && dance_style_id != null ) {
         if (sqlFinal == "") {
             sqlFinal = ` AND dance_style_class.dance_style_id = ${dance_style_id}`;
         } else {
@@ -308,28 +308,28 @@ controller.getClassFilter = (req, res) => {
         }
 
     }
-    if (class_name != "") {
+    if (class_name != "" && class_name != null) {
         if (sqlFinal == "") {
             sqlFinal = sqlFinal + ` AND class.class_name = "${class_name}"`;
         } else {
             sqlFinal = `AND class.class_name = "${class_name}"`;
         }
     }
-    if (location != "") {
+    if (location != "" && location != null) {
         if (sqlFinal == "") {
             sqlFinal = ` AND class.location = "${location}"`;
         } else {
             sqlFinal = sqlFinal + ` AND class.location = "${location}"`;
         }
     }
-    if (start_date != "") {
+    if (start_date != "" && start_date != null) {
         if (sqlFinal == "") {
             sqlFinal = ` AND time_table.start_date = "${start_date}"`;
         } else {
             sqlFinal = sqlFinal + ` AND time_table.start_date = "${start_date}"`;
         }
     }
-    if (level != "") {
+    if (level != "" && level != null) {
         if (sqlFinal == "") {
             sqlFinal = ` AND dance_style_class.level = ${level}`;
         } else {

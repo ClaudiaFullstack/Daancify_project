@@ -1,6 +1,6 @@
 .full-page {
   height: 520px;
-  width: 400px;
+  // width: 400px;
   display: flex;
   box-sizing: content-box;
 
@@ -125,6 +125,10 @@ mat-form-field {
     float: left;
     margin-top: 15px;
   }
+  .mat-card {
+    background: red !important;
+    color: red !important;
+}
   @media only screen and (max-width: 900px){
   .full-page{
       height: 750px;

@@ -1,7 +1,6 @@
 <!-- Botón desplegable -->
-<mat-expansion-panel [expanded]="panelOpenState"
-(opened)="beforePanelOpened(panelOpenState)"
-  (closed)="beforePanelClosed(panelOpenState)">
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="beforePanelOpened(panelOpenState)"
+    (closed)="beforePanelClosed(panelOpenState)">
     <mat-expansion-panel-header>
         <mat-panel-title>
             Crear una nueva escuela
@@ -62,17 +61,13 @@
                                 </mat-error>
                             </mat-form-field>
                         </p>
-                        <div class="row container-form-buttom-submit">
-                            <div class="buttom-box">
-                                <button mat-raised-button class="submit-button buttom-form" (click)="createSchoolDance()"
-                                    [disabled]="!danceSchoolForm.valid">Crear Escuela</button>
 
-                                <button mat-raised-button class="submit-button margin-buttom buttom-form" (click)="danceSchoolForm.reset()">Limpiar</button>
-                            </div>
-                        </div>
                     </div>
-                    
                 </div>
+                <button mat-raised-button class="submit-button " (click)="createSchoolDance()"
+                    [disabled]="!danceSchoolForm.valid">Crear Escuela</button>
+                <button mat-raised-button class="submit-button margin-buttom"
+                    (click)="danceSchoolForm.reset()">Limpiar</button>
             </div>
         </form>
     </mat-card>

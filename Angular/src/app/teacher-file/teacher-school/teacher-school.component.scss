@@ -1,5 +1,20 @@
 
 /* CSS CARD */
+.submit-button {
+  margin-top: 28px;
+  width: 140px;
+  height: 32px;
+  background: #ff1717;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
 
 $color_white: #fff;
 $color_prime: red;
@@ -14,7 +29,7 @@ $color_grey_dark: #a2a2a2;
   margin: auto;
 }
 .margin-buttom{
-  margin-left: 15px;
+  margin-left: 10px;
 }
 .blog-card {
   display: flex;

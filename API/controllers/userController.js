@@ -160,7 +160,7 @@ controller.search = (req, res) => {
     let sqlFinal = "";
     console.log(req.body)
 
-    if (user_name != "") {
+    if (user_name != "" && user_name != null) {
         if (sqlFinal == "") {
             sqlFinal = ` AND user_name = "${user_name}"`;
         } else {
@@ -168,28 +168,28 @@ controller.search = (req, res) => {
         }
 
     }
-    if (name != "") {
+    if (name != "" && name != null) {
         if (sqlFinal == "") {
             sqlFinal = ` AND name = "${name}"`;
         } else {
             sqlFinal = sqlFinal + ` AND name = "${name}"`;
         }
     }
-    if (last_name != "") {
+    if (last_name != "" && last_name != null) {
         if (sqlFinal == "") {
             sqlFinal = ` AND last_name = "${last_name}"`;
         } else {
             sqlFinal = sqlFinal + ` AND last_name = "${last_name}"`;
         }
     }
-    if (phone != "") {
+    if (phone != "" && phone != null) {
         if (sqlFinal == "") {
             sqlFinal = ` AND phone = "${phone}"`;
         } else {
             sqlFinal = sqlFinal + ` AND phone = "${phone}"`;
         }
     }
-    if (email != "") {
+    if (email != ""  && email != null) {
         if (sqlFinal == "") {
             sqlFinal = ` AND email = "${email}"`;
         } else {
